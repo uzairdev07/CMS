@@ -11,6 +11,8 @@
       <color id="6" value="#171a34" name="Color 6" enabled="true" />
       <color id="7" value="#311333" name="Color 7" enabled="true" />
       <color id="8" value="#1e1e1e" name="Color 8" enabled="true" />
+      <color id="9" value="#1ffc2c" name="Color 9" enabled="true" />
+      <color id="10" value="#4f60b6" name="Color 10" enabled="true" />
     </colors>
     <option name="marksForCollapsedHighlights" value="Dots" />
   </component>
