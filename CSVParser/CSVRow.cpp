@@ -29,7 +29,14 @@ vector<string> CSVRow::parseHeader(string row, char delimiter) {
     return values;
 }
 
-template<class T>
-T CSVRow::getColumn(int index) {
+string CSVRow::getString(int index) {
     return values[index];
+}
+
+int CSVRow::getInt(int index) {
+    return atoi(values[index].c_str());
+}
+
+double CSVRow::getDouble(int index) {
+    return atof(values[index].c_str());
 }

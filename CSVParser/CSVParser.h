@@ -16,8 +16,8 @@ public:
 
     // ? Methods
     vector<CSVRow> read(string file, bool isHeader = false);
-    void write(string file, string data);
-    CSVRow getHeader(string file, bool isHeader = true);
+    static void write(string file, string data);
+    vector<CSVRow> getHeader(string file, bool isHeader = true);
 
 };
 

@@ -26,8 +26,9 @@ public:
     // ? Methods
     void parseRow(string row, char delimiter = ',');
     vector<string> parseHeader(string row, char delimiter = ',');
-    template<class T>
-    T getColumn(int index);
+    string getString(int index);
+    int getInt(int index);
+    double getDouble(int index);
 
     // ! Destructor
 
