@@ -115,6 +115,18 @@ build CMakeFiles/uni_project.dir/objects/library/books/book.cpp.obj: CXX_COMPILE
   OBJECT_DIR = CMakeFiles\uni_project.dir
   OBJECT_FILE_DIR = CMakeFiles\uni_project.dir\objects\library\books
 
+build CMakeFiles/uni_project.dir/CSVParser/CSVParser.cpp.obj: CXX_COMPILER__uni_project_Debug E$:/WorkFiles/Work/uni_project/CMS/CSVParser/CSVParser.cpp || cmake_object_order_depends_target_uni_project
+  DEP_FILE = CMakeFiles\uni_project.dir\CSVParser\CSVParser.cpp.obj.d
+  FLAGS = -g -std=gnu++23
+  OBJECT_DIR = CMakeFiles\uni_project.dir
+  OBJECT_FILE_DIR = CMakeFiles\uni_project.dir\CSVParser
+
+build CMakeFiles/uni_project.dir/CSVParser/CSVRow.cpp.obj: CXX_COMPILER__uni_project_Debug E$:/WorkFiles/Work/uni_project/CMS/CSVParser/CSVRow.cpp || cmake_object_order_depends_target_uni_project
+  DEP_FILE = CMakeFiles\uni_project.dir\CSVParser\CSVRow.cpp.obj.d
+  FLAGS = -g -std=gnu++23
+  OBJECT_DIR = CMakeFiles\uni_project.dir
+  OBJECT_FILE_DIR = CMakeFiles\uni_project.dir\CSVParser
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target uni_project
@@ -123,7 +135,7 @@ build CMakeFiles/uni_project.dir/objects/library/books/book.cpp.obj: CXX_COMPILE
 #############################################
 # Link the executable uni_project.exe
 
-build uni_project.exe: CXX_EXECUTABLE_LINKER__uni_project_Debug CMakeFiles/uni_project.dir/main.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/courses/course.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/students/students.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/subjects/subjects.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/teachers/teachers.cpp.obj CMakeFiles/uni_project.dir/objects/library/books/books.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/courses/courses.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/students/student.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/subjects/subject.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/teachers/teacher.cpp.obj CMakeFiles/uni_project.dir/objects/library/books/book.cpp.obj
+build uni_project.exe: CXX_EXECUTABLE_LINKER__uni_project_Debug CMakeFiles/uni_project.dir/main.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/courses/course.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/students/students.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/subjects/subjects.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/teachers/teachers.cpp.obj CMakeFiles/uni_project.dir/objects/library/books/books.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/courses/courses.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/students/student.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/subjects/subject.cpp.obj CMakeFiles/uni_project.dir/objects/addmision/teachers/teacher.cpp.obj CMakeFiles/uni_project.dir/objects/library/books/book.cpp.obj CMakeFiles/uni_project.dir/CSVParser/CSVParser.cpp.obj CMakeFiles/uni_project.dir/CSVParser/CSVRow.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\uni_project.dir
