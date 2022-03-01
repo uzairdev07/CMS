@@ -9,7 +9,7 @@
  *  Operator Overloading
  *  Methods
  *  Getters and Setters
- *  Destrcutor
+ *  Destructor
 */
 
 // ? Constructors
@@ -59,7 +59,7 @@ void student::setStudent() {
     parser.write(STUDENTS_FILE, this->getStudent());
 }
 
-// ? Get Student From File
+// ? Get Student
 string student::getStudent() const {
     stringstream ss;
     ss << this->getRoll();
@@ -76,7 +76,6 @@ string student::getStudent() const {
     string student = ss.str();
     return student;
 }
-
 
 // ? Getters and Setters
 

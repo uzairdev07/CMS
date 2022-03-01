@@ -3,6 +3,7 @@
 #include "CSVParser/CSVParser.h"
 #include "CSVParser/CSVRow.h"
 #include "objects/students/student.h"
+#include "objects/students/Students.h"
 using namespace std;
 
 int main() {
@@ -20,10 +21,11 @@ int main() {
 //             << setw(15) << col.getString(1)
 //             << setw(15) << col.getInt(2)
 //             << setw(15) << col.getString(3) << endl;
-//    parser.write(filePath, "\n1001,Test,18,BSC");
 
-    student s;
-    s.setStudent();
-
+    Students students;
+    students.getTotalStudents();
+    vector<student> st = students.searchStudent("uzair");
+    for (auto student : st)
+        cout << student.getRoll() << endl;
     return 0;
 }

@@ -17,6 +17,6 @@ add_executable(
         objects/courses/courses.cpp
         objects/students/student.h
         objects/students/student.cpp
-        objects/students/students.h
-        objects/students/students.cpp
+        objects/students/Students.h
+        objects/students/Students.cpp
 )
