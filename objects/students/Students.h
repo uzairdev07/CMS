@@ -27,9 +27,10 @@ public:
     student searchStudent(int id);
     vector<student> searchStudent(string name);
     int getSize() const;
+    void printLine() const;
 
     // * Destructors
-    virtual ~Students();
+    ~Students();
 
 };
 

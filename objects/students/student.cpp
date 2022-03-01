@@ -19,13 +19,13 @@ student::student() {
 }
 
 // ? Overloaded Constructor
-student::student(int roll, string name, string dob, string contact, string course)
-        :roll{roll}, name{name}, dob{dob}, contact{contact}, course{course}
+student::student(int roll, string name, string dob, string contact, string address, string course)
+        :roll{roll}, name{name}, dob{dob}, contact{contact}, address{address}, course{course}
 {}
 
 // * Operator Overloading
 
-// ? Insertion Operator
+// ? Extraction Operator
 istream &operator>>(istream &is, student &student) {
     cout << "Enter Roll: ";
     is >> student.roll;
@@ -35,18 +35,21 @@ istream &operator>>(istream &is, student &student) {
     is >> student.dob;
     cout << "Enter Contact: ";
     is >> student.contact;
+    cout << "Enter Address: ";
+    is >> student.address;
     cout << "Enter Course: ";
     is >> student.course;
     return is;
 }
 
-// ? Extraction Operator
+// ? Insertion Operator
 ostream &operator<<(ostream &os, const student &student) {
-    os << student.roll << ","
-       << student.name << ","
-       << student.dob << ","
-       << student.course << ","
-       << student.contact;
+    os << student.getRoll() << ","
+       << student.getName() << ","
+       << student.getDob() << ","
+       << student.getContact() << ","
+       << student.getAddress() << ","
+       << student.getCourse();
     return os;
 }
 
@@ -69,6 +72,8 @@ string student::getStudent() const {
     ss << this->getDob();
     ss << ",";
     ss << this->getContact();
+    ss << ",";
+    ss << this->getAddress();
     ss << ",";
     ss << this->getCourse();
     ss << ",";
@@ -117,6 +122,14 @@ const string &student::getContact() const {
 
 void student::setContact(const string &contact) {
     student::contact = contact;
+}
+
+const string &student::getAddress() const {
+    return address;
+}
+
+void student::setAddress(const string &address) {
+    student::address = address;
 }
 
 // ? Destructor

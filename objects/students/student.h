@@ -20,14 +20,15 @@ private:
     int roll;
     string name;
     string dob;
-    string course;
     string contact;
+    string address;
+    string course;
 
 public:
     // * Constructors
     student();
     // * Overloading Constructor
-    student(int roll, string name, string dob, string contact, string course);
+    student(int roll, string name, string dob, string contact, string address, string course);
 
     // * Operator Overloading
 
@@ -55,6 +56,10 @@ public:
     const string &getDob() const;
 
     void setDob(const string &dob);
+
+    const string &getAddress() const;
+
+    void setAddress(const string &address);
 
     const string &getCourse() const;
 

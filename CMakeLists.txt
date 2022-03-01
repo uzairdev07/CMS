@@ -19,4 +19,8 @@ add_executable(
         objects/students/student.cpp
         objects/students/Students.h
         objects/students/Students.cpp
+        objects/teachers/teacher.h
+        objects/teachers/teacher.cpp
+        objects/teachers/Teachers.h
+        objects/teachers/Teachers.cpp
 )

@@ -32,13 +32,16 @@ void Students::getTotalStudents() const {
              << setw(15) << col.getString(2)
              << setw(15) << col.getString(3)
              << setw(15) << col.getString(4)
+             << setw(15) << col.getString(5)
              << endl;
+    printLine();
     for (auto student : students)
         cout << setw(15) << student.getInt(0)
              << setw(15) << student.getString(1)
              << setw(15) << student.getString(2)
              << setw(15) << student.getString(3)
              << setw(15) << student.getString(4)
+             << setw(15) << student.getString(5)
              << endl;
 }
 
@@ -53,7 +56,8 @@ student Students::searchStudent(int id) {
                     row.getString(1),
                     row.getString(2),
                     row.getString(3),
-                    row.getString(4)
+                    row.getString(4),
+                    row.getString(5)
             );
 }
 
@@ -70,7 +74,8 @@ vector<student> Students::searchStudent(string name) {
                             row.getString(1),
                             row.getString(2),
                             row.getString(3),
-                            row.getString(4)
+                            row.getString(4),
+                            row.getString(5)
                     )
             );
     return st;
@@ -81,6 +86,13 @@ int Students::getSize() const {
     CSVParser parser;
     vector<CSVRow> students = parser.read(STUDENTS_FILE);
     return students.size();
+}
+
+// ? Print Header Bottom Border
+void Students::printLine() const {
+    cout << setw(8);
+    for (int i = 0; i < 90; i++)
+        (i < 89) ? (cout << "_") : (cout << endl);
 }
 
 // ? Destructor
