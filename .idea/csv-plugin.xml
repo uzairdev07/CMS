@@ -10,7 +10,28 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\test.csv">
+        <entry key="\files\courses.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\files\students.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\files\subjects.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\files\teachers.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

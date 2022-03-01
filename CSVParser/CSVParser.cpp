@@ -26,11 +26,10 @@ vector<CSVRow> CSVParser::read(string file, bool isHeader) {
 
 void CSVParser::write(string file, string data) {
     ofstream outputFile;
-    outputFile.open(file, ios_base::app);
+    outputFile.open(file, ios::app);
     if (!outputFile)
         cerr << "Error! Unable to open file..." << endl;
     outputFile << data;
-    outputFile << ",";
     outputFile.close();
 }
 
