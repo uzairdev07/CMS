@@ -2,34 +2,35 @@
 // Created by Mr. Uzair on 2/24/2022.
 //
 
-#ifndef UNI_PROJECT_TEACHERS_H
-#define UNI_PROJECT_TEACHERS_H
+#ifndef UNI_PROJECT_SUBJECTS_H
+#define UNI_PROJECT_SUBJECTS_H
 
 #include <iostream>
 #include <vector>
-#include "teacher.h"
+#include "subject.h"
 using namespace std;
 
-class Teachers {
+
+class Subjects {
 private:
     // * Attributes
 public:
     // * Constructor
-    Teachers();
+    Subjects();
 
     // * Overloaded Constructor
 
     // * Operator Overloading
 
     // * Methods
-    void getTotalTeachers() const;
-    teacher searchTeacher(int id);
-    vector<teacher> searchTeacher(string name);
+    void getTotalSubjects() const;
+    subject searchSubject(int id);
+    vector<subject> searchSubject(string name);
     int getSize() const;
 
     // * Destructors
-    ~Teachers();
+    ~Subjects();
 };
 
 
-#endif //UNI_PROJECT_TEACHERS_H
+#endif //UNI_PROJECT_SUBJECTS_H

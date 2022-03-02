@@ -26,7 +26,7 @@ vector<CSVRow> CSVParser::read(string file, bool isHeader) {
 
 void CSVParser::write(string file, string data) {
     ofstream outputFile;
-    outputFile.open(file, ios::app);
+    outputFile.open(file, ios::out | ios::app);
     if (!outputFile)
         cerr << "Error! Unable to open file..." << endl;
     outputFile << data;

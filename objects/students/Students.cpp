@@ -3,6 +3,9 @@
 //
 
 #include "Students.h"
+#include "../../CSVParser/CSVParser.h"
+#include "../../helpers/Const.cpp"
+#include "../../helpers/style.cpp"
 
 /*
  *  Constructors
@@ -34,7 +37,7 @@ void Students::getTotalStudents() const {
              << setw(15) << col.getString(4)
              << setw(15) << col.getString(5)
              << endl;
-    printLine();
+    printLine(90);
     for (auto student : students)
         cout << setw(15) << student.getInt(0)
              << setw(15) << student.getString(1)
@@ -86,13 +89,6 @@ int Students::getSize() const {
     CSVParser parser;
     vector<CSVRow> students = parser.read(STUDENTS_FILE);
     return students.size();
-}
-
-// ? Print Header Bottom Border
-void Students::printLine() const {
-    cout << setw(8);
-    for (int i = 0; i < 90; i++)
-        (i < 89) ? (cout << "_") : (cout << endl);
 }
 
 // ? Destructor

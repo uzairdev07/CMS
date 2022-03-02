@@ -3,6 +3,8 @@
 //
 
 #include "student.h"
+#include "../../CSVParser/CSVParser.h"
+#include "../../helpers/Const.cpp"
 
 /*
  *  Constructors

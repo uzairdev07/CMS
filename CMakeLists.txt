@@ -10,17 +10,21 @@ add_executable(
         CSVParser/CSVParser.h
         CSVParser/CSVRow.cpp
         CSVParser/CSVRow.h
-        helpers/const.cpp
+        helpers/Const.cpp
         objects/courses/course.h
         objects/courses/course.cpp
-        objects/courses/courses.h
-        objects/courses/courses.cpp
-        objects/students/student.h
-        objects/students/student.cpp
-        objects/students/Students.h
-        objects/students/Students.cpp
+        objects/courses/Courses.h
+        objects/courses/Courses.cpp
+        objects/subjects/subject.h
+        objects/subjects/subject.cpp
+        objects/subjects/Subjects.h
+        objects/subjects/Subjects.cpp
         objects/teachers/teacher.h
         objects/teachers/teacher.cpp
         objects/teachers/Teachers.h
         objects/teachers/Teachers.cpp
-)
+        objects/students/student.h
+        objects/students/student.cpp
+        objects/students/Students.h
+        objects/students/Students.cpp
+        helpers/style.cpp)

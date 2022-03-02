@@ -3,6 +3,9 @@
 //
 
 #include "Teachers.h"
+#include "../../CSVParser/CSVParser.h"
+#include "../../helpers/Const.cpp"
+#include "../../helpers/style.cpp"
 
 /*
  *  Constructors
@@ -27,14 +30,16 @@ void Teachers::getTotalTeachers() const {
              << setw(15) << col.getString(2)
              << setw(15) << col.getString(3)
              << setw(15) << col.getString(4)
+             << setw(15) << col.getString(5)
              << endl;
-    printLine();
+    printLine(90);
     for (auto teacher: teachers)
         cout << setw(15) << teacher.getInt(0)
              << setw(15) << teacher.getString(1)
              << setw(15) << teacher.getString(2)
              << setw(15) << teacher.getString(3)
              << setw(15) << teacher.getString(4)
+             << setw(15) << teacher.getString(5)
              << endl;
 }
 
@@ -49,7 +54,8 @@ teacher Teachers::searchTeacher(int id) {
                     row.getString(1),
                     row.getString(2),
                     row.getString(3),
-                    row.getString(4)
+                    row.getString(4),
+                    row.getString(5)
             );
 }
 
@@ -66,7 +72,8 @@ vector<teacher> Teachers::searchTeacher(string name) {
                             row.getString(1),
                             row.getString(2),
                             row.getString(3),
-                            row.getString(4)
+                            row.getString(4),
+                            row.getString(5)
                     )
             );
     return ts;
@@ -77,13 +84,6 @@ int Teachers::getSize() const {
     CSVParser parser;
     vector<CSVRow> teachers = parser.read(TEACHERS_FILE);
     return teachers.size();
-}
-
-// ? Print Header Bottom Line
-void Teachers::printLine() const {
-    cout << setw(8);
-    for (int i = 0; i < 75; i++)
-        (i < 74) ? (cout << "_") : (cout << endl);
 }
 
 // Destructors

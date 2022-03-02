@@ -9,9 +9,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <iomanip>
-#include "../../CSVParser/CSVParser.h"
-#include "../../helpers/const.cpp"
+using namespace std;
 
 class teacher {
 private:
