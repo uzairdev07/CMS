@@ -59,13 +59,13 @@ course Courses::searchCourse(int id) {
             );
 }
 
-// ? Search Course by Name
-vector<course> Courses::searchCourse(string name) {
+// ? Search Course by Data
+vector<course> Courses::searchCourse(string data, int index) {
     CSVParser parser;
     vector<CSVRow> courses = parser.read(COURSES_FILE);
     vector<course> st;
     for (CSVRow row: courses)
-        if (name == row.getString(1))
+        if (data == row.getString(index))
             st.push_back(
                     course(
                             row.getInt(0),
@@ -75,6 +75,39 @@ vector<course> Courses::searchCourse(string name) {
                     )
             );
     return st;
+}
+
+// ? Search Course by Data
+vector<course> Courses::searchCourse(float data, int index) {
+    CSVParser parser;
+    vector<CSVRow> courses = parser.read(COURSES_FILE);
+    vector<course> st;
+    for (CSVRow row: courses)
+        if (data == row.getDouble(index))
+            st.push_back(
+                    course(
+                            row.getInt(0),
+                            row.getString(1),
+                            row.getInt(2),
+                            row.getString(3)
+                    )
+            );
+    return st;
+}
+
+// ? Search Course by Name
+vector<course> Courses::searchCourseByName(string name) {
+    return searchCourse(name, 1);
+}
+
+// ? Search Course by Fee
+vector<course> Courses::searchCourseByFee(float fee) {
+    return searchCourse(fee, 2);
+}
+
+// ? Search Course by Name
+vector<course> Courses::searchCourseByStartDate(string start_date) {
+    return searchCourse(start_date, 3);
 }
 
 // ? Get Number of Subjects

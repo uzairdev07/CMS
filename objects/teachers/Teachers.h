@@ -23,8 +23,12 @@ public:
 
     // * Methods
     void getTotalTeachers() const;
-    teacher searchTeacher(int id);
-    vector<teacher> searchTeacher(string name);
+    teacher searchTeacherById(int id);
+    vector<teacher> searchTeacher(string data, int index);
+    vector<teacher> searchTeacherByName(string name);
+    vector<teacher> searchTeacherByDob(string dob);
+    vector<teacher> searchTeacherByAddress(string address);
+    vector<teacher> searchTeacherByContact(string contact);
     int getSize() const;
 
     // * Destructors

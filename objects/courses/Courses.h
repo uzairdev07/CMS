@@ -23,8 +23,12 @@ public:
 
     // * Methods
     void getTotalCourses() const;
-    course searchCourse(int id);
-    vector<course> searchCourse(string name);
+    course searchCourseById(int id);
+    vector<course> searchCourse(string data, int index);
+    vector<course> searchCourse(float fee, int index);
+    vector<course> searchCourseByName(string name);
+    vector<course> searchCourseByFee(float fee);
+    vector<course> searchCourseByStartDate(string start_date);
     int getSize() const;
 
     // * Destructors

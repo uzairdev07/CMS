@@ -59,8 +59,6 @@ void teacher::setTeacher() {
     parser.write(TEACHERS_FILE, getTeacher());
 }
 
-
-
 // ? Get Teacher from File
 string teacher::getTeacher() const {
     stringstream ss;
