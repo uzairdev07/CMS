@@ -40,6 +40,7 @@ public:
 
     void setStudent();
     string getStudent() const;
+    void updateStudent();
 
     // ? Getters and Setters
     int getRoll() const;

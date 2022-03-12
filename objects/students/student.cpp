@@ -84,6 +84,48 @@ string student::getStudent() const {
     return student;
 }
 
+// ? Update Student
+void student::updateStudent() {
+    CSVParser parser;
+    int n = 0;
+    string name, dob, contact, address, course;
+    again:
+    cout << "Enter number: ";
+    cin >> n;
+    switch (n) {
+        case 1:
+            cout << "Enter New Name: ";
+            cin >> name;
+            this->setName(name);
+            break;
+        case 2:
+            cout << "Enter DOB: ";
+            cin >> dob;
+            this->setDob(dob);
+            break;
+        case 3:
+            cout << "Enter Address: ";
+            cin >> address;
+            this->setAddress(address);
+            break;
+        case 4:
+            cout << "Enter Contact: ";
+            cin >> contact;
+            this->setContact(contact);
+            break;
+        case 5:
+            cout << "Enter Course: ";
+            cin >> course;
+            this->setCourse(course);
+            break;
+        default:
+            cerr << "Invalid Input! ";
+            goto again;
+            break;
+    }
+
+}
+
 // ? Getters and Setters
 
 int student::getRoll() const {

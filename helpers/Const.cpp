@@ -4,8 +4,8 @@
 
 #include <iostream>
 using namespace std;
-
-    static string STUDENTS_FILE = "F:\\CMS\\files\\students.csv";
-    static string TEACHERS_FILE = "F:\\CMS\\files\\teachers.csv";
-    static string COURSES_FILE = "F:\\CMS\\files\\courses.csv";
-    static string SUBJECTS_FILE = "F:\\CMS\\files\\Subjects.csv";
+    static string PATH = "E:\\WorkFiles\\Work\\CMS\\files\\";
+    static string STUDENTS_FILE = PATH + "students.csv";
+    static string TEACHERS_FILE = PATH + "teachers.csv";
+    static string COURSES_FILE = PATH + "courses.csv";
+    static string SUBJECTS_FILE = PATH + "Subjects.csv";

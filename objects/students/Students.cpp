@@ -49,7 +49,7 @@ void Students::getTotalStudents() const {
 }
 
 // ? Search by Student Id
-student Students::searchStudent(int id) {
+student Students::searchStudentById(int id) {
     CSVParser parser;
     vector<CSVRow> students = parser.read(STUDENTS_FILE);
     for (CSVRow row : students)
@@ -64,13 +64,13 @@ student Students::searchStudent(int id) {
             );
 }
 
-// ? Search by Student Name
-vector<student> Students::searchStudent(string name) {
+// ? Search by Student data
+vector<student> Students::searchStudent(string data, int index) {
     CSVParser parser;
     vector<CSVRow> students = parser.read(STUDENTS_FILE);
     vector<student> st;
     for (CSVRow row : students)
-        if (name == row.getString(1))
+        if (data == row.getString(index))
             st.push_back (
                     student (
                             row.getInt(0),
@@ -82,6 +82,26 @@ vector<student> Students::searchStudent(string name) {
                     )
             );
     return st;
+}
+
+// ? Search By Student Name
+vector<student> Students::searchStudentByName(string name) {
+    return searchStudent(name, 1);
+}
+
+// ? Search By Student DOB
+vector<student> Students::searchStudentByDob(string dob) {
+    return searchStudent(dob, 2);
+}
+
+// ? Search By Student Address
+vector<student> Students::searchStudentByAddress(string address) {
+    return searchStudent(address, 3);
+}
+
+// ? Search By Student Contact
+vector<student> Students::searchStudentByContact(string contact) {
+    return searchStudent(contact, 4);
 }
 
 // ? Get Number of Students
