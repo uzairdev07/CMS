@@ -44,12 +44,12 @@ void Teachers::getTotalTeachers() const {
 }
 
 // ? Search by Teacher Id
-teacher Teachers::searchTeacherById(int id) {
+teacher Teachers::searchById(int id) {
     CSVParser parser;
     vector<CSVRow> teachers = parser.read(TEACHERS_FILE);
-    for (CSVRow row : teachers)
+    for (CSVRow row: teachers)
         if (id == row.getInt(0))
-            return teacher (
+            return teacher(
                     row.getInt(0),
                     row.getString(1),
                     row.getString(2),
@@ -76,27 +76,36 @@ vector<teacher> Teachers::searchTeacher(string data, int index) {
                             row.getString(5)
                     )
             );
-    return ts;
+    if (ts.size() == 0) {
+        cerr << "No record founded yet!";
+        return ts;
+    } else
+        return ts;
 }
 
 // ? Search By Teacher Name
-vector<teacher> Teachers::searchTeacherByName(string name) {
+vector<teacher> Teachers::searchByName(string name) {
     return searchTeacher(name, 1);
 }
 
 // ? Search By Teacher DOB
-vector<teacher> Teachers::searchTeacherByDob(string dob) {
+vector<teacher> Teachers::searchByDob(string dob) {
     return searchTeacher(dob, 2);
 }
 
-// ? Search By Teacher Address
-vector<teacher> Teachers::searchTeacherByAddress(string address) {
-    return searchTeacher(address, 3);
+// ? Search By Teacher Contact
+vector<teacher> Teachers::searchByContact(string contact) {
+    return searchTeacher(contact, 3);
 }
 
-// ? Search By Teacher Name
-vector<teacher> Teachers::searchTeacherByContact(string contact) {
-    return searchTeacher(contact, 4);
+// ? Search By Teacher Address
+vector<teacher> Teachers::searchByAddress(string address) {
+    return searchTeacher(address, 4);
+}
+
+// ? Search By Teacher Subject
+vector<teacher> Teachers::searchBySubject(string subject) {
+    return searchTeacher(subject, 5);
 }
 
 // ? Get Number of Teachers

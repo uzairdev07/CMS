@@ -22,12 +22,13 @@ public:
 
     // * Methods
     void getTotalStudents() const;
-    student searchStudentById(int id);
+    student searchById(int id);
     vector<student> searchStudent(string data, int index);
-    vector<student> searchStudentByName(string name);
-    vector<student> searchStudentByDob(string dob);
-    vector<student> searchStudentByAddress(string address);
-    vector<student> searchStudentByContact(string contact);
+    vector<student> searchByName(string name);
+    vector<student> searchByDob(string dob);
+    vector<student> searchByContact(string contact);
+    vector<student> searchByAddress(string address);
+    vector<student> searchByCourse(string course);
     int getSize() const;
     // * Destructors
     ~Students();

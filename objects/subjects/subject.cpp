@@ -5,6 +5,7 @@
 #include "subject.h"
 #include "../../CSVParser/CSVParser.h"
 #include "../../helpers/Const.cpp"
+#include <iomanip>
 
 /*
  *  Constructors
@@ -35,7 +36,8 @@ istream &operator>>(istream &is, subject &subject) {
 
 // ? Insertion Operator
 ostream &operator<<(ostream &os, const subject &subject) {
-    os << subject.getId() << ","
+    os << setw(15)
+       << subject.getId() << setw(15)
        << subject.getName();
     return os;
 }

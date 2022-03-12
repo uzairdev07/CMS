@@ -42,7 +42,7 @@ void Subjects::getTotalSubjects() const {
 }
 
 // ? Search Course by Id
-subject Subjects::searchSubject(int id) {
+subject Subjects::searchById(int id) {
     CSVParser parser;
     vector<CSVRow> subjects = parser.read(SUBJECTS_FILE);
     for (CSVRow row : subjects)
@@ -54,7 +54,7 @@ subject Subjects::searchSubject(int id) {
 }
 
 // ? Search Course by Name
-vector<subject> Subjects::searchSubject(string name) {
+vector<subject> Subjects::searchByName(string name) {
     CSVParser parser;
     vector<CSVRow> subjects = parser.read(SUBJECTS_FILE);
     vector<subject> st;
@@ -66,7 +66,11 @@ vector<subject> Subjects::searchSubject(string name) {
                             row.getString(1)
                     )
             );
-    return st;
+    if (st.size() == 0) {
+        cerr << "No Record Founded Ye! ...";
+        return st;
+    } else
+        return st;
 }
 
 // ? Get Number of Subjects

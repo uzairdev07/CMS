@@ -24,8 +24,8 @@ public:
 
     // * Methods
     void getTotalSubjects() const;
-    subject searchSubject(int id);
-    vector<subject> searchSubject(string name);
+    subject searchById(int id);
+    vector<subject> searchByName(string name);
     int getSize() const;
 
     // * Destructors

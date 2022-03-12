@@ -46,7 +46,7 @@ void Courses::getTotalCourses() const {
 }
 
 // ? Search Course by Id
-course Courses::searchCourse(int id) {
+course Courses::searchById(int id) {
     CSVParser parser;
     vector<CSVRow> courses = parser.read(COURSES_FILE);
     for (CSVRow row: courses)
@@ -74,7 +74,11 @@ vector<course> Courses::searchCourse(string data, int index) {
                             row.getString(3)
                     )
             );
-    return st;
+    if (st.size() == 0) {
+        cerr << "No Record Founded Ye! ...";
+        return st;
+    } else
+        return st;
 }
 
 // ? Search Course by Data
@@ -96,17 +100,17 @@ vector<course> Courses::searchCourse(float data, int index) {
 }
 
 // ? Search Course by Name
-vector<course> Courses::searchCourseByName(string name) {
+vector<course> Courses::searchByName(string name) {
     return searchCourse(name, 1);
 }
 
 // ? Search Course by Fee
-vector<course> Courses::searchCourseByFee(float fee) {
+vector<course> Courses::searchByFee(float fee) {
     return searchCourse(fee, 2);
 }
 
 // ? Search Course by Name
-vector<course> Courses::searchCourseByStartDate(string start_date) {
+vector<course> Courses::searchByStartDate(string start_date) {
     return searchCourse(start_date, 3);
 }
 

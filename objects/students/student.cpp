@@ -5,6 +5,7 @@
 #include "student.h"
 #include "../../CSVParser/CSVParser.h"
 #include "../../helpers/Const.cpp"
+#include <iomanip>
 
 /*
  *  Constructors
@@ -46,11 +47,12 @@ istream &operator>>(istream &is, student &student) {
 
 // ? Insertion Operator
 ostream &operator<<(ostream &os, const student &student) {
-    os << student.getRoll() << ","
-       << student.getName() << ","
-       << student.getDob() << ","
-       << student.getContact() << ","
-       << student.getAddress() << ","
+    os << setw(15)
+       << student.getRoll() << setw(15)
+       << student.getName() << setw(15)
+       << student.getDob() << setw(15)
+       << student.getContact() << setw(15)
+       << student.getAddress() << setw(15)
        << student.getCourse();
     return os;
 }
