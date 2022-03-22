@@ -16,19 +16,19 @@ public:
     // * Constructor
     CSVRow();
     // * Copy Constructor
-    CSVRow(const CSVRow &obj);
+    CSVRow(const CSVRow &);
 
     // * Operator Overloading
 
     // ? Assignment Operator
-    CSVRow operator=(const CSVRow &rhs);
+    CSVRow operator=(const CSVRow &);
 
     // ? Methods
-    void parseRow(string row, char delimiter = ',');
-    vector<string> parseHeader(string row, char delimiter = ',');
-    string getString(int index);
-    int getInt(int index);
-    double getDouble(int index);
+    void parseRow(string row, char = ',');
+    vector<string> parseHeader(string row, char = ',');
+    string getString(int);
+    int getInt(int);
+    double getDouble(int);
 
     // ! Destructor
 

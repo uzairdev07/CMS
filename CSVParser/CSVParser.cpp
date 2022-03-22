@@ -3,6 +3,7 @@
 //
 
 #include "CSVParser.h"
+#include "../helpers/Const.cpp"
 
 CSVParser::CSVParser() {}
 

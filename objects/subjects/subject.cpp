@@ -44,14 +44,14 @@ ostream &operator<<(ostream &os, const subject &subject) {
 
 // * Methods
 
-// ? Insert subject to File
+// ? Insert subjectMenu to File
 void subject::setSubject() {
     CSVParser parser;
     cin >> *this;
     parser.write(SUBJECTS_FILE, this->getSubject());
 }
 
-// ? Get subject
+// ? Get subjectMenu
 string subject::getSubject() const {
     stringstream ss;
     ss << this->getId();

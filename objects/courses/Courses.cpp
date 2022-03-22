@@ -6,6 +6,7 @@
 #include "../../CSVParser/CSVParser.h"
 #include "../../helpers/style.cpp"
 #include "../../helpers/Const.cpp"
+#include "../../utilities/menu.h"
 
 /*
  *  Constructors
@@ -54,7 +55,7 @@ course Courses::searchById(int id) {
             return course(
                     row.getInt(0),
                     row.getString(1),
-                    row.getInt(2),
+                    row.getDouble(2),
                     row.getString(3)
             );
 }
@@ -70,7 +71,7 @@ vector<course> Courses::searchCourse(string data, int index) {
                     course(
                             row.getInt(0),
                             row.getString(1),
-                            row.getInt(2),
+                            row.getDouble(2),
                             row.getString(3)
                     )
             );
@@ -92,7 +93,7 @@ vector<course> Courses::searchCourse(float data, int index) {
                     course(
                             row.getInt(0),
                             row.getString(1),
-                            row.getInt(2),
+                            row.getDouble(2),
                             row.getString(3)
                     )
             );
@@ -119,6 +120,67 @@ int Courses::getSize() const {
     CSVParser parser;
     vector<CSVRow> courses = parser.read(COURSES_FILE);
     return courses.size();
+}
+
+// ? Display Menu
+void Courses::displayMenu() const {
+    for (int i = 0; i < options.size(); i++)
+        cout << setw(50) << i + 1 << ". " << options.at(i) << endl;
+}
+
+// ? Select Menu
+void Courses::select() {
+    displayMenu();
+    int id, key;
+    float fee;
+    string name, startDate;
+    course c;
+    int n;
+    again:
+    cout << "Enter Number: ";
+    cin >> n;
+    switch (n) {
+        case 1:
+            c.setCourse();
+            break;
+        case 2:
+
+            break;
+        case 3:
+            // Delete
+            break;
+        case 4:
+            cout << "Enter id: ";
+            cin >> id;
+            searchById(id);
+            break;
+        case 5:
+            cout << "Enter Name: ";
+            cin >> name;
+            searchByName(name);
+            break;
+        case 6:
+            cout << "Enter Fee: ";
+            cin >> fee;
+            searchByFee(fee);
+            break;
+        case 7:
+            cout << "Enter Start Date: ";
+            cin >> startDate;
+            searchByStartDate(startDate);
+            break;
+        case 8:
+            getTotalCourses();
+            break;
+        default:
+            cout << "Invalid Choice! try again..." << endl;
+            goto again;
+    }
+    cout << "Press 0 to return to Main Menu: ";
+    cin >> key;
+    if (key == 0)
+        goto again;
+
 }
 
 // ? Destructor

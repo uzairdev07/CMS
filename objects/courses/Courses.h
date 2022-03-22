@@ -13,6 +13,16 @@ using namespace std;
 class Courses {
 private:
     // * Attributes
+    vector<string> options {
+            "Add New",
+            "Update",
+            "Delete",
+            "Search By Id",
+            "Search By Name",
+            "Search By Fee",
+            "Search By Start Date",
+            "Display All"
+    };
 public:
     // * Constructor
     Courses();
@@ -24,12 +34,16 @@ public:
     // * Methods
     void getTotalCourses() const;
     course searchById(int id);
-    vector<course> searchCourse(string data, int index);
-    vector<course> searchCourse(float fee, int index);
-    vector<course> searchByName(string name);
-    vector<course> searchByFee(float fee);
-    vector<course> searchByStartDate(string start_date);
+    vector<course> searchCourse(string, int);
+    vector<course> searchCourse(float, int);
+    vector<course> searchByName(string);
+    vector<course> searchByFee(float);
+    vector<course> searchByStartDate(string);
     int getSize() const;
+
+    // ? Menu
+    void displayMenu() const;
+    void select();
 
     // * Destructors
     ~Courses();

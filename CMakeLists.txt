@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.20)
 project(CMS)
 
 set(CMAKE_CXX_STANDARD 23)
@@ -27,4 +27,4 @@ add_executable(
         objects/students/student.cpp
         objects/students/Students.h
         objects/students/Students.cpp
-        helpers/style.cpp)
+        helpers/style.cpp utilities/menu.cpp utilities/menu.h)

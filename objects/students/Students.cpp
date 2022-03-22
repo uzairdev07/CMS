@@ -85,7 +85,7 @@ vector<student> Students::searchStudent(string data, int index) {
                     )
             );
     if (students.size() == 0) {
-        cerr << "No Record Founded Ye! ...";
+        cerr << "No Record Founded Yet! ...";
         return st;
     } else
         return st;
