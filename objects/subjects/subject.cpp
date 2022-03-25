@@ -5,6 +5,7 @@
 #include "subject.h"
 #include "../../CSVParser/CSVParser.h"
 #include "../../helpers/Const.cpp"
+#include "../courses/Courses.h"
 #include <iomanip>
 
 /*
@@ -19,8 +20,8 @@
 subject::subject() {}
 
 // ? Overloaded Constructor
-subject::subject(int id, string name)
-        :id(id), name(name)
+subject::subject(int id, string name, int course_id)
+        :id(id), name(name), course_id(course_id)
 {}
 
 // * Operator Overloading
@@ -31,6 +32,10 @@ istream &operator>>(istream &is, subject &subject) {
     is >> subject.id;
     cout << "Enter Name: ";
     is >> subject.name;
+    Courses courses;
+    courses.getTotalCourses();
+    cout << "Enter Course Id: ";
+    is >> subject.course_id;
     return is;
 }
 
@@ -38,7 +43,8 @@ istream &operator>>(istream &is, subject &subject) {
 ostream &operator<<(ostream &os, const subject &subject) {
     os << setw(15)
        << subject.getId() << setw(15)
-       << subject.getName();
+       << subject.getName() << setw(15)
+       << subject.getCourseId();
     return os;
 }
 
@@ -57,6 +63,8 @@ string subject::getSubject() const {
     ss << this->getId();
     ss << ",";
     ss << this->getName();
+    ss << ",";
+    ss << this->getCourseId();
     ss << ",";
     ss << "\n";
     string subject = ss.str();
@@ -78,6 +86,14 @@ const string &subject::getName() const {
 
 void subject::setName(const string &name) {
     subject::name = name;
+}
+
+int subject::getCourseId() const {
+    return course_id;
+}
+
+void subject::setCourseId(int courseId) {
+    course_id = courseId;
 }
 
 // ? Destructor

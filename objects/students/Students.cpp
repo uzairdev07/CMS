@@ -3,9 +3,11 @@
 //
 
 #include "Students.h"
+#include "../courses/Courses.h"
 #include "../../CSVParser/CSVParser.h"
 #include "../../helpers/Const.cpp"
 #include "../../helpers/style.cpp"
+#include "../../utilities/menu.h"
 
 /*
  *  Constructors
@@ -31,21 +33,21 @@ void Students::getTotalStudents() const {
     vector<CSVRow> students = parser.read(STUDENTS_FILE);
     if (!(students.size()) == 0) {
         for ( auto col: header )
-            cout << setw(15) << col.getString(0)
-                 << setw(15) << col.getString(1)
-                 << setw(15) << col.getString(2)
-                 << setw(15) << col.getString(3)
-                 << setw(15) << col.getString(4)
-                 << setw(15) << col.getString(5)
+            cout << setw(COL_WIDTH) << col.getString(0)
+                 << setw(COL_WIDTH) << col.getString(1)
+                 << setw(COL_WIDTH) << col.getString(2)
+                 << setw(COL_WIDTH) << col.getString(3)
+                 << setw(COL_WIDTH) << col.getString(4)
+                 << setw(COL_WIDTH) << col.getString(5)
                  << endl;
         printLine(90);
         for ( auto student: students )
-            cout << setw(15) << student.getInt(0)
-                 << setw(15) << student.getString(1)
-                 << setw(15) << student.getString(2)
-                 << setw(15) << student.getString(3)
-                 << setw(15) << student.getString(4)
-                 << setw(15) << student.getString(5)
+            cout << setw(COL_WIDTH) << student.getInt(0)
+                 << setw(COL_WIDTH) << student.getString(1)
+                 << setw(COL_WIDTH) << student.getString(2)
+                 << setw(COL_WIDTH) << student.getString(3)
+                 << setw(COL_WIDTH) << student.getString(4)
+                 << setw(COL_WIDTH) << student.getString(5)
                  << endl;
     } else
         cerr << "No Record Founded Ye! ...";
@@ -63,7 +65,7 @@ student Students::searchById(int id) {
                     row.getString(2),
                     row.getString(3),
                     row.getString(4),
-                    row.getString(5)
+                    row.getInt(5)
             );
 }
 
@@ -72,7 +74,7 @@ vector<student> Students::searchStudent(string data, int index) {
     CSVParser parser;
     vector<CSVRow> students = parser.read(STUDENTS_FILE);
     vector<student> st;
-    for (CSVRow row: students)
+    for ( CSVRow row: students )
         if (data == row.getString(index))
             st.push_back(
                     student(
@@ -81,7 +83,7 @@ vector<student> Students::searchStudent(string data, int index) {
                             row.getString(2),
                             row.getString(3),
                             row.getString(4),
-                            row.getString(5)
+                            row.getInt(5)
                     )
             );
     if (students.size() == 0) {
@@ -112,8 +114,25 @@ vector<student> Students::searchByAddress(string address) {
 }
 
 // ? Search By Student Course
-vector<student> Students::searchByCourse(string course) {
-    return searchStudent(course, 5);
+vector<student> Students::searchByCourse(string course_name) {
+    CSVParser parser;
+    vector<CSVRow> records = parser.read(STUDENTS_FILE);
+    vector<student> students;
+    Courses courses;
+    int id = courses.getCourseId(course_name);
+    for (auto row : records)
+        if (row.getInt(5) == id)
+            students.push_back(
+                    student(
+                            row.getInt(0),
+                            row.getString(1),
+                            row.getString(2),
+                            row.getString(3),
+                            row.getString(4),
+                            row.getInt(5)
+                    )
+            );
+    return students;
 }
 
 // ? Get Number of Students
@@ -121,6 +140,78 @@ int Students::getSize() const {
     CSVParser parser;
     vector<CSVRow> students = parser.read(STUDENTS_FILE);
     return students.size();
+}
+
+// ? Display Menu
+void Students::displayMenu() const {
+    for ( int i = 0; i < options.size(); i++ )
+        cout << setw(WIDTH) << i + 1 << ". " << options.at(i) << endl;
+}
+
+// ? Select Menu
+void Students::select() {
+    displayMenu();
+    int id;
+    string name, dob, phone, address, courseName;
+    student s, st;
+    int n, key;
+    again:
+    cout << "Enter Number (Press 0 to go back): ";
+    cin >> n;
+    if (n == 0)
+        Menu m;
+    switch (n) {
+        case 1:
+            s.setStudent();
+            break;
+        case 2:
+
+            break;
+        case 3:
+            // Delete
+            break;
+        case 4:
+            cout << "Enter id: ";
+            cin >> id;
+            searchById(id);
+            break;
+        case 5:
+            cout << "Enter Name: ";
+            cin >> name;
+            searchByName(name);
+            break;
+        case 6:
+            cout << "Enter DOB: ";
+            cin >> dob;
+            searchByDob(dob);
+            break;
+        case 7:
+            cout << "Enter Phone: ";
+            cin >> phone;
+            searchByContact(phone);
+            break;
+        case 8:
+            cout << "Enter Address: ";
+            cin >> address;
+            searchByAddress(address);
+            break;
+        case 9:
+            cout << "Enter Course Name: ";
+            cin >> courseName;
+            searchByCourse(courseName);
+            break;
+        case 10:
+            getTotalStudents();
+            break;
+        default:
+            cout << "Invalid Choice! try again..." << endl;
+            goto again;
+    }
+    cout << "Press 0 to return to Main Menu: ";
+    cin >> key;
+    if (key == 0)
+        goto again;
+
 }
 
 // ? Destructor

@@ -19,13 +19,13 @@ private:
     string dob;
     string contact;
     string address;
-    string course;
+    int course_id;
 
 public:
     // * Constructors
     student();
     // * Overloading Constructor
-    student(int roll, string name, string dob, string contact, string address, string course);
+    student(int roll, string name, string dob, string contact, string address, int course_id);
 
     // * Operator Overloading
 
@@ -59,9 +59,9 @@ public:
 
     void setAddress(const string &address);
 
-    const string &getCourse() const;
+    const int &getCourseId() const;
 
-    void setCourse(const string &course);
+    void setCourseId(const int &course_id);
 
     const string &getContact() const;
 

@@ -14,6 +14,15 @@ using namespace std;
 class Subjects {
 private:
     // * Attributes
+    vector<string> options {
+            "Add New",
+            "Update",
+            "Delete",
+            "Search By Id",
+            "Search By Name",
+            "Search By Course Name",
+            "Display All"
+    };
 public:
     // * Constructor
     Subjects();
@@ -26,7 +35,15 @@ public:
     void getTotalSubjects() const;
     subject searchById(int id);
     vector<subject> searchByName(string name);
+    vector<subject> searchByCourse(string);
     int getSize() const;
+
+    // ? Get Subject ID
+    int getSubjectId(const string subject_name) const;
+
+    // ? Menu
+    void displayMenu() const;
+    void select();
 
     // * Destructors
     ~Subjects();

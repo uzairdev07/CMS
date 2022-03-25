@@ -6,6 +6,7 @@
 #include <iomanip>
 #include "../../CSVParser/CSVParser.h"
 #include "../../helpers/Const.cpp"
+#include "../subjects/Subjects.h"
 
 /*
  *  Constructors
@@ -19,8 +20,8 @@
 teacher::teacher() {}
 
 // ? Overloaded Constructor
-teacher::teacher(int id, string name, string dob, string contact, string address, string subject)
-        :id{id}, name{name}, dob{dob}, contact{contact}, address{address}, subject{subject}
+teacher::teacher(int id, string name, string dob, string contact, string address, int subject_id)
+        :id{id}, name{name}, dob{dob}, contact{contact}, address{address}, subject_id{subject_id}
 {}
 
 // * Operator Overloading
@@ -31,7 +32,7 @@ ostream &operator<<(ostream &os, const teacher &teacher) {
        << teacher.getDob() << setw(15)
        << teacher.getContact() << setw(15)
        << teacher.getAddress() << setw(15)
-       << teacher.getSubject();
+       << teacher.getSubjectId();
     return os;
 }
 
@@ -46,8 +47,10 @@ istream &operator>>(istream &is, teacher &teacher) {
     is >> teacher.contact;
     cout << "Enter Address: ";
     is >> teacher.address;
-    cout << "Enter Subject: ";
-    is >> teacher.subject;
+    Subjects subjects;
+    subjects.getTotalSubjects();
+    cout << "Enter Subject Id: ";
+    is >> teacher.subject_id;
     return is;
 }
 
@@ -73,7 +76,7 @@ string teacher::getTeacher() const {
     ss << ",";
     ss << this->getAddress();
     ss << ",";
-    ss << this->getSubject();
+    ss << this->getSubjectId();
     ss << ",";
     ss << "\n";
     string teacher = ss.str();
@@ -122,12 +125,12 @@ void teacher::setAddress(const string &address) {
     teacher::address = address;
 }
 
-const string &teacher::getSubject() const {
-    return subject;
+int teacher::getSubjectId() const {
+    return subject_id;
 }
 
-void teacher::setSubject(const string &subject) {
-    teacher::subject = subject;
+void teacher::setSubjectId(int subjectId) {
+    subject_id = subjectId;
 }
 
 // ? Destructor

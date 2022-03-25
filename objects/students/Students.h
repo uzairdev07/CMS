@@ -12,6 +12,18 @@ using namespace std;
 class Students {
 private:
     // * Attributes
+    vector<string> options {
+            "Add New",
+            "Update",
+            "Delete",
+            "Search By Id",
+            "Search By Name",
+            "Search By DOB",
+            "Search By Phone",
+            "Search By Address",
+            "Search By Course Name",
+            "Display All"
+    };
 public:
     // * Constructor
     Students();
@@ -22,14 +34,19 @@ public:
 
     // * Methods
     void getTotalStudents() const;
-    student searchById(int id);
-    vector<student> searchStudent(string data, int index);
-    vector<student> searchByName(string name);
-    vector<student> searchByDob(string dob);
-    vector<student> searchByContact(string contact);
-    vector<student> searchByAddress(string address);
-    vector<student> searchByCourse(string course);
+    student searchById(int);
+    vector<student> searchStudent(string, int);
+    vector<student> searchByName(string);
+    vector<student> searchByDob(string);
+    vector<student> searchByContact(string);
+    vector<student> searchByAddress(string);
+    vector<student> searchByCourse(string);
     int getSize() const;
+
+    // ? Menu
+    void displayMenu() const;
+    void select();
+
     // * Destructors
     ~Students();
 

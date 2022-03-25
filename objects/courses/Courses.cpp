@@ -32,17 +32,17 @@ void Courses::getTotalCourses() const {
     vector<CSVRow> header = parser.getHeader(COURSES_FILE);
     vector<CSVRow> courses = parser.read(COURSES_FILE);
     for (auto col: header)
-        cout << setw(15) << col.getString(0)
-             << setw(15) << col.getString(1)
-             << setw(15) << col.getString(2)
-             << setw(15) << col.getString(3)
+        cout << setw(COL_WIDTH) << col.getString(0)
+             << setw(COL_WIDTH) << col.getString(1)
+             << setw(COL_WIDTH) << col.getString(2)
+             << setw(COL_WIDTH) << col.getString(3)
              << endl;
     printLine(60);
     for (auto course: courses)
-        cout << setw(15) << course.getInt(0)
-             << setw(15) << course.getString(1)
-             << setw(15) << course.getInt(2)
-             << setw(15) << course.getString(3)
+        cout << setw(COL_WIDTH) << course.getInt(0)
+             << setw(COL_WIDTH) << course.getString(1)
+             << setw(COL_WIDTH) << course.getInt(2)
+             << setw(COL_WIDTH) << course.getString(3)
              << endl;
 }
 
@@ -125,7 +125,7 @@ int Courses::getSize() const {
 // ? Display Menu
 void Courses::displayMenu() const {
     for (int i = 0; i < options.size(); i++)
-        cout << setw(50) << i + 1 << ". " << options.at(i) << endl;
+        cout << setw(WIDTH) << i + 1 << ". " << options.at(i) << endl;
 }
 
 // ? Select Menu
@@ -134,11 +134,13 @@ void Courses::select() {
     int id, key;
     float fee;
     string name, startDate;
-    course c;
+    course c, cr;
     int n;
     again:
-    cout << "Enter Number: ";
+    cout << "Enter Number (Press 0 to go back): ";
     cin >> n;
+    if (n == 0)
+        Menu m;
     switch (n) {
         case 1:
             c.setCourse();
@@ -180,7 +182,15 @@ void Courses::select() {
     cin >> key;
     if (key == 0)
         goto again;
+}
 
+// ? Get Course ID
+int Courses::getCourseId(const string course_name) const {
+    CSVParser parser;
+    vector<CSVRow> records = parser.read(COURSES_FILE);
+    for (auto row : records)
+        if (row.getString(1) == course_name)
+            return row.getInt(0);
 }
 
 // ? Destructor

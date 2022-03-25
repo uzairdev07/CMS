@@ -5,6 +5,7 @@
 #include "student.h"
 #include "../../CSVParser/CSVParser.h"
 #include "../../helpers/Const.cpp"
+#include "../courses/Courses.h"
 #include <iomanip>
 
 /*
@@ -22,8 +23,9 @@ student::student() {
 }
 
 // ? Overloaded Constructor
-student::student(int roll, string name, string dob, string contact, string address, string course)
-        :roll{roll}, name{name}, dob{dob}, contact{contact}, address{address}, course{course}
+student::student(int roll, string name, string dob, string contact, string address, int course_id)
+        :roll{roll}, name{name}, dob{dob}, contact{contact}, address{address}, course_id{course_id
+}
 {}
 
 // * Operator Overloading
@@ -40,20 +42,22 @@ istream &operator>>(istream &is, student &student) {
     is >> student.contact;
     cout << "Enter Address: ";
     is >> student.address;
-    cout << "Enter Course: ";
-    is >> student.course;
+    Courses courses;
+    courses.getTotalCourses();
+    cout << "Enter Course id: ";
+    is >> student.course_id;
     return is;
 }
 
 // ? Insertion Operator
 ostream &operator<<(ostream &os, const student &student) {
-    os << setw(15)
+    os << setiosflags(ios::left) << setw(15)
        << student.getRoll() << setw(15)
        << student.getName() << setw(15)
        << student.getDob() << setw(15)
        << student.getContact() << setw(15)
        << student.getAddress() << setw(15)
-       << student.getCourse();
+       << student.getCourseId();
     return os;
 }
 
@@ -79,7 +83,7 @@ string student::getStudent() const {
     ss << ",";
     ss << this->getAddress();
     ss << ",";
-    ss << this->getCourse();
+    ss << this->getCourseId();
     ss << ",";
     ss << "\n";
     string student = ss.str();
@@ -89,8 +93,8 @@ string student::getStudent() const {
 // ? Update Student
 void student::updateStudent() {
     CSVParser parser;
-    int n = 0;
-    string name, dob, contact, address, course;
+    int n = 0, course_id{};
+    string name{}, dob{}, contact{}, address{};
     again:
     cout << "Enter number: ";
     cin >> n;
@@ -117,8 +121,8 @@ void student::updateStudent() {
             break;
         case 5:
             cout << "Enter Course: ";
-            cin >> course;
-            this->setCourse(course);
+            cin >> course_id;
+            this->setCourseId(course_id);
             break;
         default:
             cerr << "Invalid Input! ";
@@ -154,12 +158,12 @@ void student::setDob(const string &dob) {
     student::dob = dob;
 }
 
-const string &student::getCourse() const {
-    return course;
+const int &student::getCourseId() const {
+    return course_id;
 }
 
-void student::setCourse(const string &course) {
-    student::course = course;
+void student::setCourseId(const int &course_id) {
+    this->course_id = course_id;
 }
 
 const string &student::getContact() const {

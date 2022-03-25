@@ -13,6 +13,15 @@ using namespace std;
 class Teachers {
 private:
     // * Attributes
+    vector<string> options {
+            "Add New",
+            "Update",
+            "Delete",
+            "Search By Id",
+            "Search By Name",
+            "Search By Subject Name",
+            "Display All"
+    };
 public:
     // * Constructor
     Teachers();
@@ -29,8 +38,12 @@ public:
     vector<teacher> searchByDob(string dob);
     vector<teacher> searchByContact(string contact);
     vector<teacher> searchByAddress(string address);
-    vector<teacher> searchBySubject(string subject);
+    vector<teacher> searchBySubject(string subject_name);
     int getSize() const;
+
+    // ? Menu
+    void displayMenu() const;
+    void select();
 
     // * Destructors
     ~Teachers();

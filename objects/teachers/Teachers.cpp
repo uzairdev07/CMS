@@ -6,6 +6,8 @@
 #include "../../CSVParser/CSVParser.h"
 #include "../../helpers/Const.cpp"
 #include "../../helpers/style.cpp"
+#include "../../utilities/menu.h"
+#include "../subjects/Subjects.h"
 
 /*
  *  Constructors
@@ -25,21 +27,21 @@ void Teachers::getTotalTeachers() const {
     vector<CSVRow> header = parser.getHeader(TEACHERS_FILE);
     vector<CSVRow> teachers = parser.read(TEACHERS_FILE);
     for (auto col : header)
-        cout << setw(15) << col.getString(0)
-             << setw(15) << col.getString(1)
-             << setw(15) << col.getString(2)
-             << setw(15) << col.getString(3)
-             << setw(15) << col.getString(4)
-             << setw(15) << col.getString(5)
+        cout << setw(COL_WIDTH) << col.getString(0)
+             << setw(COL_WIDTH) << col.getString(1)
+             << setw(COL_WIDTH) << col.getString(2)
+             << setw(COL_WIDTH) << col.getString(3)
+             << setw(COL_WIDTH) << col.getString(4)
+             << setw(COL_WIDTH) << col.getString(5)
              << endl;
     printLine(90);
     for (auto teacher: teachers)
-        cout << setw(15) << teacher.getInt(0)
-             << setw(15) << teacher.getString(1)
-             << setw(15) << teacher.getString(2)
-             << setw(15) << teacher.getString(3)
-             << setw(15) << teacher.getString(4)
-             << setw(15) << teacher.getString(5)
+        cout << setw(COL_WIDTH) << teacher.getInt(0)
+             << setw(COL_WIDTH) << teacher.getString(1)
+             << setw(COL_WIDTH) << teacher.getString(2)
+             << setw(COL_WIDTH) << teacher.getString(3)
+             << setw(COL_WIDTH) << teacher.getString(4)
+             << setw(COL_WIDTH) << teacher.getInt(5)
              << endl;
 }
 
@@ -55,7 +57,7 @@ teacher Teachers::searchById(int id) {
                     row.getString(2),
                     row.getString(3),
                     row.getString(4),
-                    row.getString(5)
+                    row.getInt(5)
             );
 }
 
@@ -73,9 +75,10 @@ vector<teacher> Teachers::searchTeacher(string data, int index) {
                             row.getString(2),
                             row.getString(3),
                             row.getString(4),
-                            row.getString(5)
+                            row.getInt(5)
                     )
             );
+    cout << ts.size();
     if (ts.size() == 0) {
         cerr << "No record founded yet!";
         return ts;
@@ -104,8 +107,25 @@ vector<teacher> Teachers::searchByAddress(string address) {
 }
 
 // ? Search By Teacher Subject
-vector<teacher> Teachers::searchBySubject(string subject) {
-    return searchTeacher(subject, 5);
+vector<teacher> Teachers::searchBySubject(string subject_name) {
+    CSVParser parser;
+    vector<CSVRow> records = parser.read(TEACHERS_FILE);
+    vector<teacher> teachers;
+    Subjects subjects;
+    int id = subjects.getSubjectId(subject_name);
+    for (auto row : records)
+        if (row.getInt(5) == id)
+            teachers.push_back(
+                    teacher(
+                            row.getInt(0),
+                            row.getString(1),
+                            row.getString(2),
+                            row.getString(3),
+                            row.getString(4),
+                            row.getInt(5)
+                    )
+            );
+    return teachers;
 }
 
 // ? Get Number of Teachers
@@ -113,6 +133,62 @@ int Teachers::getSize() const {
     CSVParser parser;
     vector<CSVRow> teachers = parser.read(TEACHERS_FILE);
     return teachers.size();
+}
+
+// ? Display Menu
+void Teachers::displayMenu() const {
+    for (int i = 0; i < options.size(); i++)
+        cout << setw(WIDTH) << i + 1 << ". " << options.at(i) << endl;
+}
+
+// ? Select Menu
+void Teachers::select() {
+    displayMenu();
+    int id, key, course_id;
+    string name, courseName;
+    teacher t, tr;
+    int n;
+    again:
+    cout << "Enter Number (Press 0 to go back): ";
+    cin >> n;
+    if (n == 0)
+        Menu m;
+    switch (n) {
+        case 1:
+            t.setTeacher();
+            break;
+        case 2:
+
+            break;
+        case 3:
+            // Delete
+            break;
+        case 4:
+            cout << "Enter id: ";
+            cin >> id;
+            searchById(id);
+            break;
+        case 5:
+            cout << "Enter Name: ";
+            cin >> name;
+            searchByName(name);
+            break;
+        case 6:
+            cout << "Enter Subject Name: ";
+            cin >> name;
+            searchBySubject(name);
+            break;
+        case 7:
+            getTotalTeachers();
+            break;
+        default:
+            cout << "Invalid Choice! try again..." << endl;
+            goto again;
+    }
+    cout << "Press 0 to return to Main Menu: ";
+    cin >> key;
+    if (key == 0)
+        goto again;
 }
 
 // Destructors

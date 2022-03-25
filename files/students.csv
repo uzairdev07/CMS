@@ -1,4 +1,6 @@
-id,name,dob,phone,address,courseMenu
-1,uzair,06-12-2002,03144912073,mandi,BS,
-2,uzair,02-5-2002,07846356774,mandi,BS,
-3,umair,20-12-2003,03014945698,lahore,BS,
+id,name,dob,phone,address,course_id
+1,uzair,06-12-2002,03144912073,mandi,1,
+2,uzair,02-5-2002,07846356774,mandi,2,
+3,umair,20-12-2003,03014945698,lahore,1,
+5,Ahmad,02-02-2000,03088342589,Mandi,1,
+5,Ahamd,02-02-2000,03088342589,Mandi,3,

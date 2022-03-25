@@ -41,6 +41,9 @@ public:
     vector<course> searchByStartDate(string);
     int getSize() const;
 
+    // ? Get Course ID
+    int getCourseId(const string course_name) const;
+
     // ? Menu
     void displayMenu() const;
     void select();

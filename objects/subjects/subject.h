@@ -13,11 +13,12 @@ private:
     // * Attributes
     int id;
     string name;
+    int course_id;
 public:
     // * Constructor
     subject();
     // * Overloaded Constructor
-    subject(int id, string name);
+    subject(int id, string name, int course_id);
 
     // * Operator Overloading
 
@@ -39,6 +40,10 @@ public:
     const string &getName() const;
 
     void setName(const string &name);
+
+    int getCourseId() const;
+
+    void setCourseId(int courseId);
 
     // * Destructor
     ~subject();

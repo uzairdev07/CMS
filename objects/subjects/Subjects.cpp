@@ -3,9 +3,11 @@
 //
 
 #include "Subjects.h"
+#include "../../utilities/menu.h"
 #include "../../CSVParser/CSVParser.h"
 #include "../../helpers/Const.cpp"
 #include "../../helpers/style.cpp"
+#include "../courses/Courses.h"
 
 /*
  *  Constructors
@@ -31,13 +33,15 @@ void Subjects::getTotalSubjects() const {
     vector<CSVRow> header = parser.getHeader(SUBJECTS_FILE);
     vector<CSVRow> subjects = parser.read(SUBJECTS_FILE);
     for (auto col : header)
-        cout << setw(15) << col.getString(0)
-             << setw(15) << col.getString(1)
+        cout << setw(COL_WIDTH) << col.getString(0)
+             << setw(COL_WIDTH) << col.getString(1)
+             << setw(COL_WIDTH) << col.getString(2)
              << endl;
     printLine(30);
     for (auto subject : subjects)
-        cout << setw(15) << subject.getInt(0)
-             << setw(15) << subject.getString(1)
+        cout << setw(COL_WIDTH) << subject.getInt(0)
+             << setw(COL_WIDTH) << subject.getString(1)
+             << setw(COL_WIDTH) << subject.getInt(2)
              << endl;
 }
 
@@ -49,7 +53,8 @@ subject Subjects::searchById(int id) {
         if (id == row.getInt(0))
             return subject (
                     row.getInt(0),
-                    row.getString(1)
+                    row.getString(1),
+                    row.getInt(2)
             );
 }
 
@@ -63,7 +68,8 @@ vector<subject> Subjects::searchByName(string name) {
             st.push_back (
                     subject (
                             row.getInt(0),
-                            row.getString(1)
+                            row.getString(1),
+                            row.getInt(2)
                     )
             );
     if (st.size() == 0) {
@@ -73,11 +79,95 @@ vector<subject> Subjects::searchByName(string name) {
         return st;
 }
 
+// ? Search By Subject Course
+vector<subject> Subjects::searchByCourse(string course_name) {
+    CSVParser parser;
+    vector<CSVRow> records = parser.read(SUBJECTS_FILE);
+    vector<subject> subjects;
+    Courses courses;
+    int id = courses.getCourseId(course_name);
+    for (auto row : records)
+        if (row.getInt(2) == id)
+            subjects.push_back(
+                    subject(
+                            row.getInt(0),
+                            row.getString(1),
+                            row.getInt(2)
+                    )
+            );
+    return subjects;
+}
+
 // ? Get Number of Subjects
 int Subjects::getSize() const {
     CSVParser parser;
     vector<CSVRow> subjects = parser.read(SUBJECTS_FILE);
     return subjects.size();
+}
+
+// ? Display Menu
+void Subjects::displayMenu() const {
+    for (int i = 0; i < options.size(); i++)
+        cout << setw(WIDTH) << i + 1 << ". " << options.at(i) << endl;
+}
+
+// ? Select Menu
+void Subjects::select() {
+    displayMenu();
+    int id, key, course_id;
+    string name, courseName;
+    subject s, sb;
+    int n;
+    again:
+    cout << "Enter Number (Press 0 to go back): ";
+    cin >> n;
+    if (n == 0)
+        Menu m;
+    switch (n) {
+        case 1:
+            s.setSubject();
+            break;
+        case 2:
+
+            break;
+        case 3:
+            // Delete
+            break;
+        case 4:
+            cout << "Enter id: ";
+            cin >> id;
+            searchById(id);
+            break;
+        case 5:
+            cout << "Enter Name: ";
+            cin >> name;
+            searchByName(name);
+            break;
+        case 6:
+            cout << "Enter Course Name: ";
+            cin >> name;
+            searchByCourse(name);
+            break;
+        case 7:
+            getTotalSubjects();
+            break;
+        default:
+            cout << "Invalid Choice! try again..." << endl;
+            goto again;
+    }
+    cout << "Press 0 to return to Main Menu: ";
+    cin >> key;
+    if (key == 0)
+        goto again;
+}
+
+// ? Get Subject ID
+int Subjects::getSubjectId(const string subject_name) const {
+    CSVParser parser;
+    vector<CSVRow> records = parser.read(SUBJECTS_FILE);
+    for (auto row : records)
+        if (row.getString(1) == subject_name)
+            return row.getInt(0);
 }
 
 // ? Destructor

@@ -51,15 +51,18 @@ void Menu::courseMenu() const {
 }
 
 void Menu::subjectMenu() const {
-
+    Subjects subjects;
+    subjects.select();
 }
 
 void Menu::teacherMenu() const {
-
+    Teachers teachers;
+    teachers.select();
 }
 
 void Menu::studentMenu() const {
-
+    Students students;
+    students.select();
 }
 
 void Menu::libraryMenu() const {
