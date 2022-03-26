@@ -4,6 +4,8 @@
 
 #include "menu.h"
 #include <iomanip>
+#include <conio.h>
+#include "../helpers/style.cpp"
 #include "../objects/courses/Courses.h"
 #include "../objects/subjects/Subjects.h"
 #include "../objects/teachers/Teachers.h"
@@ -12,6 +14,7 @@
 using namespace std;
 
 Menu::Menu() {
+    clear();
     displayMain(
             vector<string>{
                     "Course Menu",
@@ -27,10 +30,14 @@ void Menu::displayMain(vector<string> list) const {
     for (int i = 0; i < list.size(); i++)
         cout << setw(50) << i + 1 << ". " << list.at(i) << endl;
     int choice = 0;
-    cout << "Enter Number: ";
-    cin >> choice;
+    cout << "Enter Number (Press 0 to exit): ";
+    choice = getche();
+    choice -= 48;
+    if (choice == 0)
+        exit(0);
     switch (choice) {
         case 1:
+            clear();
             courseMenu();
         case 2:
             subjectMenu();

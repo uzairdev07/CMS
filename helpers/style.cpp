@@ -11,3 +11,7 @@ static void printLine(int n) {
     for (int i = 0; i < n; i++)
         (i < n - 1) ? (cout << "_") : (cout << endl);
 }
+
+static void clear() {
+    system("cls");
+}

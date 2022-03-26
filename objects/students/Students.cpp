@@ -8,6 +8,7 @@
 #include "../../helpers/Const.cpp"
 #include "../../helpers/style.cpp"
 #include "../../utilities/menu.h"
+#include <conio.h>
 
 /*
  *  Constructors
@@ -144,12 +145,15 @@ int Students::getSize() const {
 
 // ? Display Menu
 void Students::displayMenu() const {
+    clear();
     for ( int i = 0; i < options.size(); i++ )
         cout << setw(WIDTH) << i + 1 << ". " << options.at(i) << endl;
 }
 
 // ? Select Menu
 void Students::select() {
+    display:
+    clear();
     displayMenu();
     int id;
     string name, dob, phone, address, courseName;
@@ -157,60 +161,71 @@ void Students::select() {
     int n, key;
     again:
     cout << "Enter Number (Press 0 to go back): ";
-    cin >> n;
+    n = getche();
+    n -= 48;
     if (n == 0)
         Menu m;
     switch (n) {
+        clear();
         case 1:
             s.setStudent();
             break;
         case 2:
-
+            clear();
             break;
         case 3:
-            // Delete
+            clear();
             break;
         case 4:
+            clear();
             cout << "Enter id: ";
             cin >> id;
             searchById(id);
             break;
         case 5:
+            clear();
             cout << "Enter Name: ";
             cin >> name;
             searchByName(name);
             break;
         case 6:
+            clear();
             cout << "Enter DOB: ";
             cin >> dob;
             searchByDob(dob);
             break;
         case 7:
+            clear();
             cout << "Enter Phone: ";
             cin >> phone;
             searchByContact(phone);
             break;
         case 8:
+            clear();
             cout << "Enter Address: ";
             cin >> address;
             searchByAddress(address);
             break;
         case 9:
+            clear();
             cout << "Enter Course Name: ";
             cin >> courseName;
             searchByCourse(courseName);
             break;
         case 10:
+            clear();
             getTotalStudents();
             break;
         default:
             cout << "Invalid Choice! try again..." << endl;
+            clear();
             goto again;
     }
-    cout << "Press 0 to return to Main Menu: ";
-    cin >> key;
+    cout << "Press 0 to go back: ";
+    key = getche();
+    key -= 48;
     if (key == 0)
-        goto again;
+        goto display;
 
 }
 

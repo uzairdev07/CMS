@@ -8,6 +8,7 @@
 #include "../../helpers/style.cpp"
 #include "../../utilities/menu.h"
 #include "../subjects/Subjects.h"
+#include <conio.h>
 
 /*
  *  Constructors
@@ -143,6 +144,8 @@ void Teachers::displayMenu() const {
 
 // ? Select Menu
 void Teachers::select() {
+    display:
+    clear();
     displayMenu();
     int id, key, course_id;
     string name, courseName;
@@ -150,45 +153,53 @@ void Teachers::select() {
     int n;
     again:
     cout << "Enter Number (Press 0 to go back): ";
-    cin >> n;
+    n = getche();
+    n -= 48;
     if (n == 0)
         Menu m;
     switch (n) {
         case 1:
+            clear();
             t.setTeacher();
             break;
         case 2:
-
+            clear();
             break;
         case 3:
-            // Delete
+            clear();
             break;
         case 4:
+            clear();
             cout << "Enter id: ";
             cin >> id;
             searchById(id);
             break;
         case 5:
+            clear();
             cout << "Enter Name: ";
             cin >> name;
             searchByName(name);
             break;
         case 6:
+            clear();
             cout << "Enter Subject Name: ";
             cin >> name;
             searchBySubject(name);
             break;
         case 7:
+            clear();
             getTotalTeachers();
             break;
         default:
             cout << "Invalid Choice! try again..." << endl;
+            clear();
             goto again;
     }
-    cout << "Press 0 to return to Main Menu: ";
-    cin >> key;
+    cout << "Press 0 to go back: ";
+    key = getche();
+    key -= 48;
     if (key == 0)
-        goto again;
+        goto display;
 }
 
 // Destructors
