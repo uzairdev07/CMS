@@ -73,9 +73,9 @@ void Students::searchById(int id) {
             );
     if (records.size() == 0)
         cerr << "No Record Founded Ye! ...";
-    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "DOB" << setw(WIDTH) << "Contact" << setw(WIDTH) << "Address" << setw(WIDTH) << "Course Id" << endl;
+    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH) << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Course Id" << endl;
     for (auto s : records)
-        cout << s << endl;
+        cout << setw(COL_WIDTH) << s << endl;
 }
 
 // ? Search by Student data
@@ -106,9 +106,9 @@ void Students::searchByName(string name) {
     vector<student> records = searchStudent(name, 1);
     if (records.size() == 0)
         cerr << "No Record Founded Ye! ...";
-    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "DOB" << setw(WIDTH) << "Contact" << setw(WIDTH) << "Address" << setw(WIDTH) << "Course Id" << endl;
+    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH) << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Course Id" << endl;
     for (auto s : records)
-        cout << s << endl;
+        cout << setw(COL_WIDTH) << s << endl;
 
 }
 
@@ -117,9 +117,9 @@ void Students::searchByDob(string dob) {
     vector<student> records = searchStudent(dob, 2);
     if (records.size() == 0)
         cerr << "No Record Founded Ye! ...";
-    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "DOB" << setw(WIDTH) << "Contact" << setw(WIDTH) << "Address" << setw(WIDTH) << "Course Id" << endl;
+    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH) << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Course Id" << endl;
     for (auto s : records)
-        cout << s << endl;
+        cout << setw(COL_WIDTH) << s << endl;
 }
 
 // ? Search By Student Contact
@@ -127,9 +127,9 @@ void Students::searchByContact(string contact) {
     vector<student> records = searchStudent(contact, 3);
     if (records.size() == 0)
         cerr << "No Record Founded Ye! ...";
-    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "DOB" << setw(WIDTH) << "Contact" << setw(WIDTH) << "Address" << setw(WIDTH) << "Course Id" << endl;
+    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH) << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Course Id" << endl;
     for (auto s : records)
-        cout << s << endl;
+        cout << setw(COL_WIDTH) << s << endl;
 }
 
 // ? Search By Student Address
@@ -137,9 +137,9 @@ void Students::searchByAddress(string address) {
     vector<student> records = searchStudent(address, 4);
     if (records.size() == 0)
         cerr << "No Record Founded Ye! ...";
-    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "DOB" << setw(WIDTH) << "Contact" << setw(WIDTH) << "Address" << setw(WIDTH) << "Course Id" << endl;
+    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH) << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Course Id" << endl;
     for (auto s : records)
-        cout << s << endl;
+        cout << setw(COL_WIDTH) << s << endl;
 }
 
 // ? Search By Student Course
@@ -163,9 +163,9 @@ void Students::searchByCourse(string course_name) {
             );
     if (records.size() == 0)
         cerr << "No Record Founded Ye! ...";
-    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "DOB" << setw(WIDTH) << "Contact" << setw(WIDTH) << "Address" << setw(WIDTH) << "Course Id" << endl;
+    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH) << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Course Id" << endl;
     for (auto s : students)
-        cout << s << endl;
+        cout << setw(COL_WIDTH) << s << endl;
 }
 
 // ? Get Number of Students
@@ -248,7 +248,7 @@ void Students::select() {
                 case 4:
                     clear();
                     getTotalStudents();
-                    cout << "Enter Start Date: ";
+                    cout << "Enter Contact: ";
                     cin >> contact;
                     searchByContact(contact);
                     break;

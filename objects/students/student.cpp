@@ -51,12 +51,12 @@ istream &operator>>(istream &is, student &student) {
 
 // ? Insertion Operator
 ostream &operator<<(ostream &os, const student &student) {
-    os << setiosflags(ios::left) << setw(15)
-       << student.getRoll() << setw(15)
-       << student.getName() << setw(15)
-       << student.getDob() << setw(15)
-       << student.getContact() << setw(15)
-       << student.getAddress() << setw(15)
+    os << setiosflags(ios::left) << setw(COL_WIDTH)
+       << student.getRoll() << setw(COL_WIDTH)
+       << student.getName() << setw(COL_WIDTH)
+       << student.getDob() << setw(COL_WIDTH)
+       << student.getContact() << setw(COL_WIDTH)
+       << student.getAddress() << setw(COL_WIDTH)
        << student.getCourseId();
     return os;
 }

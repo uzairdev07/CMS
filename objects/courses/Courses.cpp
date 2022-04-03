@@ -62,11 +62,11 @@ void Courses::searchById(int id) {
                             row.getString(3)
                     )
             );
-    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "Fee" << setw(WIDTH) << "Start Date" << endl;
+    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH) << "Start Date" << endl;
     if (records.size() == 0)
         cerr << "No Record Founded Ye! ...";
-    for (auto course : records)
-        cout << course << endl;
+    for (auto cr : records)
+        cout << setw(COL_WIDTH) << cr << endl;
 }
 
 // ? Search Course by Data
@@ -112,25 +112,25 @@ vector<course> Courses::searchCourse(float data, int index) {
 // ? Search Course by Name
 void Courses::searchByName(string name) {
     vector<course> records = searchCourse(name, 1);
-    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "Fee" << setw(WIDTH) << "Start Date" << endl;
+    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH) << "Start Date" << endl;
     for (auto cr : records)
-        cout << cr << endl;
+        cout << setw(COL_WIDTH) << cr << endl;
 }
 
 // ? Search Course by Fee
 void Courses::searchByFee(float fee) {
     vector<course> records = searchCourse(fee, 2);
-    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "Fee" << setw(WIDTH) << "Start Date" << endl;
+    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH) << "Start Date" << endl;
     for (auto cr : records)
-        cout << cr << endl;
+        cout << setw(COL_WIDTH) << cr << endl;
 }
 
 // ? Search Course by Name
 void Courses::searchByStartDate(string start_date) {
     vector<course> records = searchCourse(start_date, 3);
-    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "Fee" << setw(WIDTH) << "Start Date" << endl;
+    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH) << "Start Date" << endl;
     for (auto cr : records)
-        cout << cr << endl;
+        cout << setw(COL_WIDTH) << cr << endl;
 }
 
 // ? Get Number of Subjects

@@ -40,10 +40,10 @@ istream &operator>>(istream &is, course &course) {
 
 // ? Insertion Operator
 ostream &operator<<(ostream &os, const course &course) {
-    os << setw(15)
-       << course.getId() << setw(15)
-       << course.getName() << setw(15)
-       << course.getFee() << setw(15)
+    os << setw(COL_WIDTH)
+       << course.getId() << setw(COL_WIDTH)
+       << course.getName() << setw(COL_WIDTH)
+       << course.getFee() << setw(COL_WIDTH)
        << course.getStartDate();
     return os;
 }

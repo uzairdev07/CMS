@@ -26,12 +26,12 @@ teacher::teacher(int id, string name, string dob, string contact, string address
 
 // * Operator Overloading
 ostream &operator<<(ostream &os, const teacher &teacher) {
-    os << setw(15)
-       << teacher.getId() << setw(15)
-       << teacher.getName() << setw(15)
-       << teacher.getDob() << setw(15)
-       << teacher.getContact() << setw(15)
-       << teacher.getAddress() << setw(15)
+    os << setw(COL_WIDTH)
+       << teacher.getId() << setw(COL_WIDTH)
+       << teacher.getName() << setw(COL_WIDTH)
+       << teacher.getDob() << setw(COL_WIDTH)
+       << teacher.getContact() << setw(COL_WIDTH)
+       << teacher.getAddress() << setw(COL_WIDTH)
        << teacher.getSubjectId();
     return os;
 }

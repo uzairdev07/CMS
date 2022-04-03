@@ -62,9 +62,9 @@ void Subjects::searchById(int id) {
             );
     if (records.size() == 0)
         cerr << "No Record Founded Ye! ...";
-    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "Course_Id" << endl;
+    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Course_Id" << endl;
     for (auto sb : records)
-        cout << sb << endl;
+        cout << setw(COL_WIDTH) << sb << endl;
 }
 
 // ? Search Course by Name
@@ -83,9 +83,9 @@ void Subjects::searchByName(string name) {
             );
     if (records.size() == 0)
         cerr << "No Record Founded Ye! ...";
-    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "Course_Id" << endl;
+    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Course_Id" << endl;
     for (auto sb : records)
-        cout << sb << endl;
+        cout << setw(COL_WIDTH) << sb << endl;
 }
 
 // ? Search By Subject Course
@@ -106,9 +106,9 @@ void Subjects::searchByCourse(string course_name) {
             );
     if (records.size() == 0)
         cerr << "No Record Founded Ye! ...";
-    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "Course_Id" << endl;
+    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Course_Id" << endl;
     for (auto sb : records)
-        cout << sb << endl;
+        cout << setw(COL_WIDTH) << sb << endl;
 }
 
 // ? Get Number of Subjects

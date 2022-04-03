@@ -41,9 +41,9 @@ istream &operator>>(istream &is, subject &subject) {
 
 // ? Insertion Operator
 ostream &operator<<(ostream &os, const subject &subject) {
-    os << setw(15)
-       << subject.getId() << setw(15)
-       << subject.getName() << setw(15)
+    os << setw(COL_WIDTH)
+       << subject.getId() << setw(COL_WIDTH)
+       << subject.getName() << setw(COL_WIDTH)
        << subject.getCourseId();
     return os;
 }
