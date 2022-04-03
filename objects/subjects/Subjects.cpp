@@ -33,13 +33,13 @@ void Subjects::getTotalSubjects() const {
     CSVParser parser;
     vector<CSVRow> header = parser.getHeader(SUBJECTS_FILE);
     vector<CSVRow> subjects = parser.read(SUBJECTS_FILE);
-    for (auto col : header)
+    for ( auto col: header )
         cout << setw(COL_WIDTH) << col.getString(0)
              << setw(COL_WIDTH) << col.getString(1)
              << setw(COL_WIDTH) << col.getString(2)
              << endl;
     printLine(30);
-    for (auto subject : subjects)
+    for ( auto subject: subjects )
         cout << setw(COL_WIDTH) << subject.getInt(0)
              << setw(COL_WIDTH) << subject.getString(1)
              << setw(COL_WIDTH) << subject.getInt(2)
@@ -47,56 +47,68 @@ void Subjects::getTotalSubjects() const {
 }
 
 // ? Search Course by Id
-subject Subjects::searchById(int id) {
+void Subjects::searchById(int id) {
     CSVParser parser;
     vector<CSVRow> subjects = parser.read(SUBJECTS_FILE);
-    for (CSVRow row : subjects)
+    vector<subject> records;
+    for ( CSVRow row: subjects )
         if (id == row.getInt(0))
-            return subject (
-                    row.getInt(0),
-                    row.getString(1),
-                    row.getInt(2)
-            );
-}
-
-// ? Search Course by Name
-vector<subject> Subjects::searchByName(string name) {
-    CSVParser parser;
-    vector<CSVRow> subjects = parser.read(SUBJECTS_FILE);
-    vector<subject> st;
-    for (CSVRow row : subjects)
-        if (name == row.getString(1))
-            st.push_back (
-                    subject (
-                            row.getInt(0),
-                            row.getString(1),
-                            row.getInt(2)
-                    )
-            );
-    if (st.size() == 0) {
-        cerr << "No Record Founded Ye! ...";
-        return st;
-    } else
-        return st;
-}
-
-// ? Search By Subject Course
-vector<subject> Subjects::searchByCourse(string course_name) {
-    CSVParser parser;
-    vector<CSVRow> records = parser.read(SUBJECTS_FILE);
-    vector<subject> subjects;
-    Courses courses;
-    int id = courses.getCourseId(course_name);
-    for (auto row : records)
-        if (row.getInt(2) == id)
-            subjects.push_back(
+            records.push_back(
                     subject(
                             row.getInt(0),
                             row.getString(1),
                             row.getInt(2)
                     )
             );
-    return subjects;
+    if (records.size() == 0)
+        cerr << "No Record Founded Ye! ...";
+    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "Course_Id" << endl;
+    for (auto sb : records)
+        cout << sb << endl;
+}
+
+// ? Search Course by Name
+void Subjects::searchByName(string name) {
+    CSVParser parser;
+    vector<CSVRow> subjects = parser.read(SUBJECTS_FILE);
+    vector<subject> records;
+    for ( CSVRow row: subjects )
+        if (name == row.getString(1))
+            records.push_back(
+                    subject(
+                            row.getInt(0),
+                            row.getString(1),
+                            row.getInt(2)
+                    )
+            );
+    if (records.size() == 0)
+        cerr << "No Record Founded Ye! ...";
+    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "Course_Id" << endl;
+    for (auto sb : records)
+        cout << sb << endl;
+}
+
+// ? Search By Subject Course
+void Subjects::searchByCourse(string course_name) {
+    CSVParser parser;
+    vector<CSVRow> subjects = parser.read(SUBJECTS_FILE);
+    vector<subject> records;
+    Courses courses;
+    int id = courses.getCourseId(course_name);
+    for ( auto row: subjects )
+        if (row.getInt(2) == id)
+            records.push_back(
+                    subject(
+                            row.getInt(0),
+                            row.getString(1),
+                            row.getInt(2)
+                    )
+            );
+    if (records.size() == 0)
+        cerr << "No Record Founded Ye! ...";
+    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "Course_Id" << endl;
+    for (auto sb : records)
+        cout << sb << endl;
 }
 
 // ? Get Number of Subjects
@@ -108,19 +120,24 @@ int Subjects::getSize() const {
 
 // ? Display Menu
 void Subjects::displayMenu() const {
-    for (int i = 0; i < options.size(); i++)
+    for ( int i = 0; i < options.size(); i++ )
         cout << setw(WIDTH) << i + 1 << ". " << options.at(i) << endl;
+}
+
+// ? Display Search Menu
+void Subjects::displaySearchMenu() const {
+    for ( int i = 0; i < searchOptions.size(); i++ )
+        cout << setw(WIDTH) << i + 1 << ". " << searchOptions.at(i) << endl;
 }
 
 // ? Select Menu
 void Subjects::select() {
     display:
     clear();
-    clear();
     displayMenu();
-    int id, key, course_id;
-    string name, courseName;
-    subject s, sb;
+    int id, key;
+    string name, course;
+    subject s;
     int n;
     again:
     cout << "Enter Number (Press 0 to go back): ";
@@ -140,24 +157,45 @@ void Subjects::select() {
             clear();
             break;
         case 4:
+        searchMenu:
             clear();
-            cout << "Enter id: ";
-            cin >> id;
-            searchById(id);
+            displaySearchMenu();
+            int n, key;
+            cout << "Enter Number (Press 0 to go back): ";
+            n = getche();
+            n -= 48;
+            if (n == 0)
+                goto display;
+            switch (n) {
+                case 1:
+                    clear();
+                    getTotalSubjects();
+                    cout << "Enter id: ";
+                    cin >> id;
+                    searchById(id);
+                    break;
+                case 2:
+                    clear();
+                    getTotalSubjects();
+                    cout << "Enter Name: ";
+                    cin >> name;
+                    searchByName(name);
+                    break;
+                case 3:
+                    clear();
+                    getTotalSubjects();
+                    cout << "Enter Course Name: ";
+                    cin >> course;
+                    searchByCourse(course);
+                    break;
+            }
+            cout << "Press 0 to go back: ";
+            key = getche();
+            key -= 48;
+            if (key == 0)
+                goto searchMenu;
             break;
         case 5:
-            clear();
-            cout << "Enter Name: ";
-            cin >> name;
-            searchByName(name);
-            break;
-        case 6:
-            clear();
-            cout << "Enter Course Name: ";
-            cin >> name;
-            searchByCourse(name);
-            break;
-        case 7:
             clear();
             getTotalSubjects();
             break;
@@ -177,7 +215,7 @@ void Subjects::select() {
 int Subjects::getSubjectId(const string subject_name) const {
     CSVParser parser;
     vector<CSVRow> records = parser.read(SUBJECTS_FILE);
-    for (auto row : records)
+    for ( auto row: records )
         if (row.getString(1) == subject_name)
             return row.getInt(0);
 }

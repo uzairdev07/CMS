@@ -50,8 +50,6 @@ void Menu::displayMain(vector<string> list) const {
     }
 }
 
-
-
 void Menu::courseMenu() const {
     Courses courses;
     courses.select();

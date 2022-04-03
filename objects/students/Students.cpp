@@ -55,19 +55,27 @@ void Students::getTotalStudents() const {
 }
 
 // ? Search by Student Id
-student Students::searchById(int id) {
+void Students::searchById(int id) {
     CSVParser parser;
     vector<CSVRow> students = parser.read(STUDENTS_FILE);
+    vector<student> records;
     for ( CSVRow row: students )
         if (id == row.getInt(0))
-            return student(
-                    row.getInt(0),
-                    row.getString(1),
-                    row.getString(2),
-                    row.getString(3),
-                    row.getString(4),
-                    row.getInt(5)
+            records.push_back(
+                    student(
+                            row.getInt(0),
+                            row.getString(1),
+                            row.getString(2),
+                            row.getString(3),
+                            row.getString(4),
+                            row.getInt(5)
+                    )
             );
+    if (records.size() == 0)
+        cerr << "No Record Founded Ye! ...";
+    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "DOB" << setw(WIDTH) << "Contact" << setw(WIDTH) << "Address" << setw(WIDTH) << "Course Id" << endl;
+    for (auto s : records)
+        cout << s << endl;
 }
 
 // ? Search by Student data
@@ -89,33 +97,53 @@ vector<student> Students::searchStudent(string data, int index) {
             );
     if (students.size() == 0) {
         cerr << "No Record Founded Yet! ...";
-        return st;
-    } else
-        return st;
+    }
+    return st;
 }
 
 // ? Search By Student Name
-vector<student> Students::searchByName(string name) {
-    return searchStudent(name, 1);
+void Students::searchByName(string name) {
+    vector<student> records = searchStudent(name, 1);
+    if (records.size() == 0)
+        cerr << "No Record Founded Ye! ...";
+    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "DOB" << setw(WIDTH) << "Contact" << setw(WIDTH) << "Address" << setw(WIDTH) << "Course Id" << endl;
+    for (auto s : records)
+        cout << s << endl;
+
 }
 
 // ? Search By Student DOB
-vector<student> Students::searchByDob(string dob) {
-    return searchStudent(dob, 2);
+void Students::searchByDob(string dob) {
+    vector<student> records = searchStudent(dob, 2);
+    if (records.size() == 0)
+        cerr << "No Record Founded Ye! ...";
+    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "DOB" << setw(WIDTH) << "Contact" << setw(WIDTH) << "Address" << setw(WIDTH) << "Course Id" << endl;
+    for (auto s : records)
+        cout << s << endl;
 }
 
 // ? Search By Student Contact
-vector<student> Students::searchByContact(string contact) {
-    return searchStudent(contact, 3);
+void Students::searchByContact(string contact) {
+    vector<student> records = searchStudent(contact, 3);
+    if (records.size() == 0)
+        cerr << "No Record Founded Ye! ...";
+    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "DOB" << setw(WIDTH) << "Contact" << setw(WIDTH) << "Address" << setw(WIDTH) << "Course Id" << endl;
+    for (auto s : records)
+        cout << s << endl;
 }
 
 // ? Search By Student Address
-vector<student> Students::searchByAddress(string address) {
-    return searchStudent(address, 4);
+void Students::searchByAddress(string address) {
+    vector<student> records = searchStudent(address, 4);
+    if (records.size() == 0)
+        cerr << "No Record Founded Ye! ...";
+    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "DOB" << setw(WIDTH) << "Contact" << setw(WIDTH) << "Address" << setw(WIDTH) << "Course Id" << endl;
+    for (auto s : records)
+        cout << s << endl;
 }
 
 // ? Search By Student Course
-vector<student> Students::searchByCourse(string course_name) {
+void Students::searchByCourse(string course_name) {
     CSVParser parser;
     vector<CSVRow> records = parser.read(STUDENTS_FILE);
     vector<student> students;
@@ -133,7 +161,11 @@ vector<student> Students::searchByCourse(string course_name) {
                             row.getInt(5)
                     )
             );
-    return students;
+    if (records.size() == 0)
+        cerr << "No Record Founded Ye! ...";
+    cout << "Id" << setw(WIDTH) << "Name" << setw(WIDTH) << "DOB" << setw(WIDTH) << "Contact" << setw(WIDTH) << "Address" << setw(WIDTH) << "Course Id" << endl;
+    for (auto s : students)
+        cout << s << endl;
 }
 
 // ? Get Number of Students
@@ -145,9 +177,14 @@ int Students::getSize() const {
 
 // ? Display Menu
 void Students::displayMenu() const {
-    clear();
     for ( int i = 0; i < options.size(); i++ )
         cout << setw(WIDTH) << i + 1 << ". " << options.at(i) << endl;
+}
+
+// ? Display Search Menu
+void Students::displaySearchMenu() const {
+    for (int i = 0; i < searchOptions.size(); i++)
+        cout << setw(WIDTH) << i + 1 << ". " << searchOptions.at(i) << endl;
 }
 
 // ? Select Menu
@@ -155,10 +192,10 @@ void Students::select() {
     display:
     clear();
     displayMenu();
-    int id;
-    string name, dob, phone, address, courseName;
-    student s, st;
-    int n, key;
+    int id, key;
+    string name, dob, contact, address, course_name;
+    course c;
+    int n;
     again:
     cout << "Enter Number (Press 0 to go back): ";
     n = getche();
@@ -166,9 +203,9 @@ void Students::select() {
     if (n == 0)
         Menu m;
     switch (n) {
-        clear();
         case 1:
-            s.setStudent();
+            clear();
+            c.setCourse();
             break;
         case 2:
             clear();
@@ -177,42 +214,66 @@ void Students::select() {
             clear();
             break;
         case 4:
+        searchMenu:
             clear();
-            cout << "Enter id: ";
-            cin >> id;
-            searchById(id);
+            displaySearchMenu();
+            int n, key;
+            cout << "Enter Number (Press 0 to go back): ";
+            n = getche();
+            n -= 48;
+            if (n == 0)
+                goto display;
+            switch (n) {
+                case 1:
+                    clear();
+                    getTotalStudents();
+                    cout << "Enter id: ";
+                    cin >> id;
+                    searchById(id);
+                    break;
+                case 2:
+                    clear();
+                    getTotalStudents();
+                    cout << "Enter Name: ";
+                    cin >> name;
+                    searchByName(name);
+                    break;
+                case 3:
+                    clear();
+                    getTotalStudents();
+                    cout << "Enter DOB: ";
+                    cin >> dob;
+                    searchByDob(dob);
+                    break;
+                case 4:
+                    clear();
+                    getTotalStudents();
+                    cout << "Enter Start Date: ";
+                    cin >> contact;
+                    searchByContact(contact);
+                    break;
+                case 5:
+                    clear();
+                    getTotalStudents();
+                    cout << "Enter Address: ";
+                    cin >> address;
+                    searchByAddress(address);
+                    break;
+                case 6:
+                    clear();
+                    getTotalStudents();
+                    cout << "Enter Course Name: ";
+                    cin >> course_name;
+                    searchByCourse(course_name);
+                    break;
+            }
+            cout << "Press 0 to go back: ";
+            key = getche();
+            key -= 48;
+            if (key == 0)
+                goto searchMenu;
             break;
         case 5:
-            clear();
-            cout << "Enter Name: ";
-            cin >> name;
-            searchByName(name);
-            break;
-        case 6:
-            clear();
-            cout << "Enter DOB: ";
-            cin >> dob;
-            searchByDob(dob);
-            break;
-        case 7:
-            clear();
-            cout << "Enter Phone: ";
-            cin >> phone;
-            searchByContact(phone);
-            break;
-        case 8:
-            clear();
-            cout << "Enter Address: ";
-            cin >> address;
-            searchByAddress(address);
-            break;
-        case 9:
-            clear();
-            cout << "Enter Course Name: ";
-            cin >> courseName;
-            searchByCourse(courseName);
-            break;
-        case 10:
             clear();
             getTotalStudents();
             break;
@@ -226,7 +287,6 @@ void Students::select() {
     key -= 48;
     if (key == 0)
         goto display;
-
 }
 
 // ? Destructor

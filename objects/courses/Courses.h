@@ -8,20 +8,25 @@
 #include <iostream>
 #include <vector>
 #include "course.h"
+
 using namespace std;
 
 class Courses {
 private:
     // * Attributes
-    vector<string> options {
+    vector<string> options{
             "Add New",
             "Update",
             "Delete",
+            "Search",
+            "Display All"
+    };
+
+    vector<string> searchOptions{
             "Search By Id",
             "Search By Name",
             "Search By Fee",
-            "Search By Start Date",
-            "Display All"
+            "Search By Date",
     };
 public:
     // * Constructor
@@ -33,12 +38,19 @@ public:
 
     // * Methods
     void getTotalCourses() const;
-    course searchById(int id);
+
+    void searchById(int id);
+
     vector<course> searchCourse(string, int);
+
     vector<course> searchCourse(float, int);
-    vector<course> searchByName(string);
-    vector<course> searchByFee(float);
-    vector<course> searchByStartDate(string);
+
+    void searchByName(string);
+
+    void searchByFee(float);
+
+    void searchByStartDate(string);
+
     int getSize() const;
 
     // ? Get Course ID
@@ -46,6 +58,8 @@ public:
 
     // ? Menu
     void displayMenu() const;
+    void displaySearchMenu() const;
+
     void select();
 
     // * Destructors

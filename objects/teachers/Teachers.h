@@ -17,10 +17,16 @@ private:
             "Add New",
             "Update",
             "Delete",
+            "Search",
+            "Display All"
+    };
+    vector<string> searchOptions {
             "Search By Id",
             "Search By Name",
-            "Search By Subject Name",
-            "Display All"
+            "Search By DOB",
+            "Search By Contact",
+            "Search By Address",
+            "Search By Subject Name"
     };
 public:
     // * Constructor
@@ -32,17 +38,18 @@ public:
 
     // * Methods
     void getTotalTeachers() const;
-    teacher searchById(int id);
+    void searchById(int id);
     vector<teacher> searchTeacher(string data, int index);
-    vector<teacher> searchByName(string name);
-    vector<teacher> searchByDob(string dob);
-    vector<teacher> searchByContact(string contact);
-    vector<teacher> searchByAddress(string address);
-    vector<teacher> searchBySubject(string subject_name);
+    void searchByName(string name);
+    void searchByDob(string dob);
+    void searchByContact(string contact);
+    void searchByAddress(string address);
+    void searchBySubject(string subject_name);
     int getSize() const;
 
     // ? Menu
     void displayMenu() const;
+    void displaySearchMenu() const;
     void select();
 
     // * Destructors

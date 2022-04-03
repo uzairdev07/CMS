@@ -18,10 +18,13 @@ private:
             "Add New",
             "Update",
             "Delete",
+            "Search",
+            "Display All"
+    };
+    vector<string> searchOptions {
             "Search By Id",
             "Search By Name",
-            "Search By Course Name",
-            "Display All"
+            "Search By Course Name"
     };
 public:
     // * Constructor
@@ -33,9 +36,9 @@ public:
 
     // * Methods
     void getTotalSubjects() const;
-    subject searchById(int id);
-    vector<subject> searchByName(string name);
-    vector<subject> searchByCourse(string);
+    void searchById(int id);
+    void searchByName(string name);
+    void searchByCourse(string);
     int getSize() const;
 
     // ? Get Subject ID
@@ -43,6 +46,7 @@ public:
 
     // ? Menu
     void displayMenu() const;
+    void displaySearchMenu() const;
     void select();
 
     // * Destructors
