@@ -51,7 +51,7 @@ istream &operator>>(istream &is, student &student) {
 
 // ? Insertion Operator
 ostream &operator<<(ostream &os, const student &student) {
-    os << setiosflags(ios::left) << setw(COL_WIDTH)
+    os << setw(COL_WIDTH)
        << student.getRoll() << setw(COL_WIDTH)
        << student.getName() << setw(COL_WIDTH)
        << student.getDob() << setw(COL_WIDTH)

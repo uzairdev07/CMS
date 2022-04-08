@@ -50,49 +50,51 @@ void Courses::getTotalCourses() const {
 // ? Search Course by Id
 void Courses::searchById(int id) {
     CSVParser parser;
-    vector<CSVRow> courses = parser.read(COURSES_FILE);
+    vector<CSVRow> rows = parser.search(COURSES_FILE, id, 0);
     vector<course> records;
-    for ( CSVRow row: courses )
-        if (id == row.getInt(0))
-            records.push_back(
-                    course (
-                            row.getInt(0),
-                            row.getString(1),
-                            row.getDouble(2),
-                            row.getString(3)
-                    )
-            );
-    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH) << "Start Date" << endl;
-    if (records.size() == 0)
+    for (auto row: rows) {
+        records.push_back(
+                course(
+                        row.getInt(0),
+                        row.getString(1),
+                        row.getDouble(2),
+                        row.getString(3)
+                )
+        );
+    }
+    if (records.size() != 0) {
         cerr << "No Record Founded Ye! ...";
-    for (auto cr : records)
-        cout << setw(COL_WIDTH) << cr << endl;
+        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH)
+             << "Start Date" << endl;
+        for ( auto cr: records )
+            cout << setw(COL_WIDTH) << cr << endl;
+    } else
+        cerr << "No Record Founded Yet! ...";
 }
 
 // ? Search Course by Data
 vector<course> Courses::searchCourse(string data, int index) {
     CSVParser parser;
-    vector<CSVRow> courses = parser.read(COURSES_FILE);
-    vector<course> st;
-    for ( CSVRow row: courses )
-        if (data == row.getString(index))
-            st.push_back(
-                    course(
-                            row.getInt(0),
-                            row.getString(1),
-                            row.getDouble(2),
-                            row.getString(3)
-                    )
-            );
-    if (st.size() == 0)
+    vector<CSVRow> courses = parser.search(COURSES_FILE, data, index);
+    vector<course> cr;
+    for ( auto row: courses )
+        cr.push_back(
+                course(
+                        row.getInt(0),
+                        row.getString(1),
+                        row.getDouble(2),
+                        row.getString(3)
+                )
+        );
+    if (cr.size() == 0)
         cerr << "No Record Founded Ye! ...";
-    return st;
+    return cr;
 }
 
 // ? Search Course by Data
 vector<course> Courses::searchCourse(float data, int index) {
     CSVParser parser;
-    vector<CSVRow> courses = parser.read(COURSES_FILE);
+    vector<CSVRow> courses = parser.search(COURSES_FILE, data, index);
     vector<course> st;
     for ( CSVRow row: courses )
         if (data == row.getDouble(index))
@@ -112,25 +114,34 @@ vector<course> Courses::searchCourse(float data, int index) {
 // ? Search Course by Name
 void Courses::searchByName(string name) {
     vector<course> records = searchCourse(name, 1);
-    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH) << "Start Date" << endl;
-    for (auto cr : records)
-        cout << setw(COL_WIDTH) << cr << endl;
+    if (records.size() != 0) {
+        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH)
+             << "Start Date" << endl;
+        for ( auto cr: records )
+            cout << setw(COL_WIDTH) << cr << endl;
+    }
 }
 
 // ? Search Course by Fee
 void Courses::searchByFee(float fee) {
     vector<course> records = searchCourse(fee, 2);
-    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH) << "Start Date" << endl;
-    for (auto cr : records)
-        cout << setw(COL_WIDTH) << cr << endl;
+    if (records.size() != 0) {
+        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH)
+             << "Start Date" << endl;
+        for ( auto cr: records )
+            cout << setw(COL_WIDTH) << cr << endl;
+    }
 }
 
 // ? Search Course by Name
 void Courses::searchByStartDate(string start_date) {
     vector<course> records = searchCourse(start_date, 3);
-    cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH) << "Start Date" << endl;
-    for (auto cr : records)
-        cout << setw(COL_WIDTH) << cr << endl;
+    if (records.size() != 0) {
+        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH)
+             << "Start Date" << endl;
+        for ( auto cr: records )
+            cout << setw(COL_WIDTH) << cr << endl;
+    }
 }
 
 // ? Get Number of Subjects
@@ -180,7 +191,7 @@ void Courses::select() {
             clear();
             break;
         case 4:
-            searchMenu:
+        searchMenu:
             clear();
             displaySearchMenu();
             int n, key;

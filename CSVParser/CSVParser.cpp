@@ -48,3 +48,63 @@ vector<CSVRow> CSVParser::getHeader(string file, bool isHeader) {
     inputFile.close();
     return header;
 }
+
+// ? Search Int Data
+vector<CSVRow> CSVParser::search(string file, int data, int index, bool isHeader) {
+    vector<CSVRow> rows {};
+    ifstream inputFile;
+    inputFile.open(file);
+    string row {};
+    if (!inputFile)
+        cerr << "Error! Unable to open file..." << endl;
+    if (!isHeader)
+        getline(inputFile, row);
+    while (getline(inputFile, row)) {
+        CSVRow csvRow;
+        csvRow.parseRow(row);
+        if (csvRow.getInt(index) == data)
+            rows.push_back(csvRow);
+    }
+    inputFile.close();
+    return rows;
+}
+
+// ? Search Float Data
+vector<CSVRow> CSVParser::search(string file, float data, int index, bool isHeader) {
+    vector<CSVRow> rows {};
+    ifstream inputFile;
+    inputFile.open(file);
+    string row {};
+    if (!inputFile)
+        cerr << "Error! Unable to open file..." << endl;
+    if (!isHeader)
+        getline(inputFile, row);
+    while (getline(inputFile, row)) {
+        CSVRow csvRow;
+        csvRow.parseRow(row);
+        if (csvRow.getDouble(index) == data)
+            rows.push_back(csvRow);
+    }
+    inputFile.close();
+    return rows;
+}
+// ? Search String Data
+vector<CSVRow> CSVParser::search(string file, string data, int index, bool isHeader) {
+    vector<CSVRow> rows {};
+    ifstream inputFile;
+    inputFile.open(file);
+    string row {};
+    if (!inputFile)
+        cerr << "Error! Unable to open file..." << endl;
+    if (!isHeader)
+        getline(inputFile, row);
+    while (getline(inputFile, row)) {
+        CSVRow csvRow;
+        csvRow.parseRow(row);
+        if (csvRow.getString(index).find(data) != string::npos) {
+            rows.push_back(csvRow);
+        }
+    }
+    inputFile.close();
+    return rows;
+}
