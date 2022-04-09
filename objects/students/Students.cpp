@@ -39,7 +39,7 @@ void Students::getTotalStudents() const {
                  << setw(COL_WIDTH) << col.getString(2)
                  << setw(COL_WIDTH) << col.getString(3)
                  << setw(COL_WIDTH) << col.getString(4)
-                 << setw(COL_WIDTH) << col.getString(5)
+                 << setw(COL_WIDTH) << "Course_Name"
                  << endl;
         printLine(90);
         for ( auto student: students )
@@ -48,7 +48,7 @@ void Students::getTotalStudents() const {
                  << setw(COL_WIDTH) << student.getString(2)
                  << setw(COL_WIDTH) << student.getString(3)
                  << setw(COL_WIDTH) << student.getString(4)
-                 << setw(COL_WIDTH) << student.getString(5)
+                 << setw(COL_WIDTH) << getCourseName(student.getInt(5))
                  << endl;
     } else
         cerr << "No Record Founded Ye! ...";
@@ -176,6 +176,15 @@ int Students::getSize() const {
     CSVParser parser;
     vector<CSVRow> students = parser.read(STUDENTS_FILE);
     return students.size();
+}
+
+// ? Get Course Name By Id
+string Students::getCourseName(int id) const {
+    CSVParser parser;
+    string course_name;
+    vector<CSVRow> records = parser.search(COURSES_FILE, id, 0);
+    for (auto row : records)
+        return row.getString(1);
 }
 
 // ? Display Menu

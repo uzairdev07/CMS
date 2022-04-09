@@ -41,6 +41,9 @@ public:
     void searchByCourse(string);
     int getSize() const;
 
+    // ? Get Course By Id
+    string getCourseName(int id) const;
+
     // ? Get Subject ID
     int getSubjectId(const string subject_name) const;
 

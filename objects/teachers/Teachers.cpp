@@ -33,7 +33,7 @@ void Teachers::getTotalTeachers() const {
              << setw(COL_WIDTH) << col.getString(2)
              << setw(COL_WIDTH) << col.getString(3)
              << setw(COL_WIDTH) << col.getString(4)
-             << setw(COL_WIDTH) << col.getString(5)
+             << setw(COL_WIDTH) << "Course_Name"
              << endl;
     printLine(90);
     for ( auto teacher: teachers )
@@ -42,7 +42,7 @@ void Teachers::getTotalTeachers() const {
              << setw(COL_WIDTH) << teacher.getString(2)
              << setw(COL_WIDTH) << teacher.getString(3)
              << setw(COL_WIDTH) << teacher.getString(4)
-             << setw(COL_WIDTH) << teacher.getInt(5)
+             << setw(COL_WIDTH) << getCourseName(teacher.getInt(5))
              << endl;
 }
 
@@ -167,6 +167,15 @@ int Teachers::getSize() const {
     CSVParser parser;
     vector<CSVRow> teachers = parser.read(TEACHERS_FILE);
     return teachers.size();
+}
+
+// ? Get Course Name By Id
+string Teachers::getCourseName(int id) const {
+    CSVParser parser;
+    string course_name;
+    vector<CSVRow> records = parser.search(COURSES_FILE, id, 0);
+    for (auto row : records)
+        return row.getString(1);
 }
 
 // ? Display Menu

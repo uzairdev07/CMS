@@ -36,13 +36,13 @@ void Subjects::getTotalSubjects() const {
     for ( auto col: header )
         cout << setw(COL_WIDTH) << col.getString(0)
              << setw(COL_WIDTH) << col.getString(1)
-             << setw(COL_WIDTH) << col.getString(2)
+             << setw(COL_WIDTH) << "Course_Name"
              << endl;
-    printLine(30);
+    printLine(45);
     for ( auto subject: subjects )
         cout << setw(COL_WIDTH) << subject.getInt(0)
              << setw(COL_WIDTH) << subject.getString(1)
-             << setw(COL_WIDTH) << subject.getInt(2)
+             << setw(COL_WIDTH) << getCourseName(subject.getInt(2))
              << endl;
 }
 
@@ -116,6 +116,15 @@ int Subjects::getSize() const {
     CSVParser parser;
     vector<CSVRow> subjects = parser.read(SUBJECTS_FILE);
     return subjects.size();
+}
+
+// ? Get Course Name By Id
+string Subjects::getCourseName(int id) const {
+    CSVParser parser;
+    string course_name;
+    vector<CSVRow> records = parser.search(COURSES_FILE, id, 0);
+    for (auto row : records)
+        return row.getString(1);
 }
 
 // ? Display Menu
