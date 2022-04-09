@@ -7,6 +7,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <algorithm>
+#include <string>
 #include "CSVRow.h"
 
 class CSVParser {
@@ -24,6 +26,17 @@ public:
     vector<CSVRow> search(string file, float data, int index, bool isHeader = false);
     // ? Search String Data
     vector<CSVRow> search(string file, string data, int index, bool isHeader = false);
+
+    // ? Search String without case-sensitivity
+    size_t findCaseInsensitive(std::string data, std::string toSearch, size_t pos = 0)
+    {
+        // Convert complete given String to lower case
+        std::transform(data.begin(), data.end(), data.begin(), ::tolower);
+        // Convert complete given Sub String to lower case
+        std::transform(toSearch.begin(), toSearch.end(), toSearch.begin(), ::tolower);
+        // Find sub string in given string
+        return data.find(toSearch, pos);
+    }
 
 };
 

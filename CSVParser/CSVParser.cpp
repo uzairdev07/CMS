@@ -101,7 +101,8 @@ vector<CSVRow> CSVParser::search(string file, string data, int index, bool isHea
     while (getline(inputFile, row)) {
         CSVRow csvRow;
         csvRow.parseRow(row);
-        if (csvRow.getString(index).find(data) != string::npos) {
+        size_t pos = findCaseInsensitive(csvRow.getString(index), data);
+        if (pos != string::npos) {
             rows.push_back(csvRow);
         }
     }
