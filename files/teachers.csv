@@ -1,3 +1,4 @@
-id,name,dob,contact,address,subjectId
-1,uzair,06-11-2022,03144912073,mandi,1,
-6,M,Talha,03054912073,Mandi,2,
+id,name,dob,contact,address,role,subjectId
+1,uzair,06-11-2022,03144912073,mandi,lecturer,1,
+2,talha,06-11-2022,03054912073,Mandi,HOD,2,
+3,Umair,06-05-2022,03240311090,Lahore,Incharge,3,

@@ -26,6 +26,7 @@ private:
             "Search By DOB",
             "Search By Contact",
             "Search By Address",
+            "Search By Role",
             "Search By Subject Name"
     };
 public:
@@ -44,11 +45,12 @@ public:
     void searchByDob(string dob);
     void searchByContact(string contact);
     void searchByAddress(string address);
+    void searchByRole(string role);
     void searchBySubject(string subject_name);
     int getSize() const;
 
-    // ? Get Course By Id
-    string getCourseName(int id) const;
+    // ? Get Subject By Id
+    string getSubjectName(int id) const;
 
     // ? Menu
     void displayMenu() const;

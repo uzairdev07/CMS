@@ -33,16 +33,18 @@ void Teachers::getTotalTeachers() const {
              << setw(COL_WIDTH) << col.getString(2)
              << setw(COL_WIDTH) << col.getString(3)
              << setw(COL_WIDTH) << col.getString(4)
-             << setw(COL_WIDTH) << "Course_Name"
+             << setw(COL_WIDTH) << col.getString(5)
+             << setw(COL_WIDTH) << "Subject_Name"
              << endl;
-    printLine(90);
+    printLine(105);
     for ( auto teacher: teachers )
         cout << setw(COL_WIDTH) << teacher.getInt(0)
              << setw(COL_WIDTH) << teacher.getString(1)
              << setw(COL_WIDTH) << teacher.getString(2)
              << setw(COL_WIDTH) << teacher.getString(3)
              << setw(COL_WIDTH) << teacher.getString(4)
-             << setw(COL_WIDTH) << getCourseName(teacher.getInt(5))
+             << setw(COL_WIDTH) << teacher.getString(5)
+             << setw(COL_WIDTH) << getSubjectName(teacher.getInt(6))
              << endl;
 }
 
@@ -59,12 +61,13 @@ void Teachers::searchById(int id) {
                         row.getString(2),
                         row.getString(3),
                         row.getString(4),
-                        row.getInt(5)
+                        row.getString(5),
+                        row.getInt(6)
                 )
         );
     if (records.size() != 0) {
         cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
-             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Subject Id" << endl;
+             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Role" << setw(COL_WIDTH) << "Subject Id" << endl;
         for ( auto t: records )
             cout << setw(COL_WIDTH) << t << endl;
     } else
@@ -84,7 +87,8 @@ vector<teacher> Teachers::searchTeacher(string data, int index) {
                         row.getString(2),
                         row.getString(3),
                         row.getString(4),
-                        row.getInt(5)
+                        row.getString(5),
+                        row.getInt(6)
                 )
         );
     if (records.size() == 0)
@@ -97,7 +101,7 @@ void Teachers::searchByName(string name) {
     vector<teacher> teachers = searchTeacher(name, 1);
     if (teachers.size() != 0) {
         cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
-             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Subject Id" << endl;
+             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Role" << setw(COL_WIDTH) << "Subject Id" << endl;
         for ( auto t: teachers )
             cout << setw(COL_WIDTH) << t << endl;
     }
@@ -108,7 +112,7 @@ void Teachers::searchByDob(string dob) {
     vector<teacher> teachers = searchTeacher(dob, 2);
     if (teachers.size() != 0) {
         cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
-             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Subject Id" << endl;
+             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Role" << setw(COL_WIDTH) << "Subject Id" << endl;
         for ( auto t: teachers )
             cout << setw(COL_WIDTH) << t << endl;
     }
@@ -119,7 +123,7 @@ void Teachers::searchByContact(string contact) {
     vector<teacher> teachers = searchTeacher(contact, 3);
     if (teachers.size() != 0) {
         cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
-             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Subject Id" << endl;
+             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Role" << setw(COL_WIDTH) << "Subject Id" << endl;
         for ( auto t: teachers )
             cout << setw(COL_WIDTH) << t << endl;
     }
@@ -130,7 +134,18 @@ void Teachers::searchByAddress(string address) {
     vector<teacher> teachers = searchTeacher(address, 4);
     if (teachers.size() != 0) {
         cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
-             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Subject Id" << endl;
+             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Role" << setw(COL_WIDTH) << "Subject Id" << endl;
+        for ( auto t: teachers )
+            cout << setw(COL_WIDTH) << t << endl;
+    }
+}
+
+// ? Search By Teacher Role
+void Teachers::searchByRole(string role) {
+    vector<teacher> teachers = searchTeacher(role, 5);
+    if (teachers.size() != 0) {
+        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
+             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Role" << setw(COL_WIDTH) << "Subject Id" << endl;
         for ( auto t: teachers )
             cout << setw(COL_WIDTH) << t << endl;
     }
@@ -151,12 +166,13 @@ void Teachers::searchBySubject(string subject_name) {
                         row.getString(2),
                         row.getString(3),
                         row.getString(4),
-                        row.getInt(5)
+                        row.getString(5),
+                        row.getInt(6)
                 )
         );
     if (teachers.size() != 0) {
         cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
-             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Subject Id" << endl;
+             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Role" << setw(COL_WIDTH) << "Subject Id" << endl;
         for ( auto t: teachers )
             cout << setw(COL_WIDTH) << t << endl;
     }
@@ -170,10 +186,10 @@ int Teachers::getSize() const {
 }
 
 // ? Get Course Name By Id
-string Teachers::getCourseName(int id) const {
+string Teachers::getSubjectName(int id) const {
     CSVParser parser;
-    string course_name;
-    vector<CSVRow> records = parser.search(COURSES_FILE, id, 0);
+    string subject_name;
+    vector<CSVRow> records = parser.search(SUBJECTS_FILE, id, 0);
     for (auto row : records)
         return row.getString(1);
 }
@@ -196,7 +212,7 @@ void Teachers::select() {
     clear();
     displayMenu();
     int id, key;
-    string name, subject_name, dob, contact, address;
+    string name, subject_name, dob, contact, address, role;
     teacher t;
     int n;
     again:
@@ -263,6 +279,13 @@ void Teachers::select() {
                     searchByAddress(address);
                     break;
                 case 6:
+                    clear();
+                    getTotalTeachers();
+                    cout << "Enter Role: ";
+                    cin >> role;
+                    searchByRole(role);
+                    break;
+                case 7:
                     clear();
                     getTotalTeachers();
                     cout << "Enter Subject: ";

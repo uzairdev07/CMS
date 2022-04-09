@@ -20,8 +20,8 @@
 teacher::teacher() {}
 
 // ? Overloaded Constructor
-teacher::teacher(int id, string name, string dob, string contact, string address, int subject_id)
-        :id{id}, name{name}, dob{dob}, contact{contact}, address{address}, subject_id{subject_id}
+teacher::teacher(int id, string name, string dob, string contact, string address, string role, int subject_id)
+        :id{id}, name{name}, dob{dob}, contact{contact}, address{address}, role{role}, subject_id{subject_id}
 {}
 
 // * Operator Overloading
@@ -32,12 +32,13 @@ ostream &operator<<(ostream &os, const teacher &teacher) {
        << teacher.getDob() << setw(COL_WIDTH)
        << teacher.getContact() << setw(COL_WIDTH)
        << teacher.getAddress() << setw(COL_WIDTH)
+       << teacher.getRole() << setw(COL_WIDTH)
        << teacher.getSubjectId();
     return os;
 }
 
 istream &operator>>(istream &is, teacher &teacher) {
-    cout << "Enter Roll: ";
+    cout << "Enter Id: ";
     is >> teacher.id;
     cout << "Enter Name: ";
     is >> teacher.name;
@@ -47,6 +48,8 @@ istream &operator>>(istream &is, teacher &teacher) {
     is >> teacher.contact;
     cout << "Enter Address: ";
     is >> teacher.address;
+    cout << "Enter Role: ";
+    is >> teacher.role;
     Subjects subjects;
     subjects.getTotalSubjects();
     cout << "Enter Subject Id: ";
@@ -75,6 +78,8 @@ string teacher::getTeacher() const {
     ss << this->getContact();
     ss << ",";
     ss << this->getAddress();
+    ss << ",";
+    ss << this->getRole();
     ss << ",";
     ss << this->getSubjectId();
     ss << ",";
@@ -123,6 +128,14 @@ const string &teacher::getAddress() const {
 
 void teacher::setAddress(const string &address) {
     teacher::address = address;
+}
+
+const string &teacher::getRole() const {
+    return role;
+}
+
+void teacher::setRole(const string &role) {
+    this->role = role;
 }
 
 int teacher::getSubjectId() const {
