@@ -8,6 +8,7 @@ using namespace std;
 //    static string PATH = "/media/uzair/sal/WorkFiles/Work/CMS/files/";
     // ? Window Path
     static string PATH = "E:\\WorkFiles\\Work\\CMS\\files\\";
+    static string DEPARTMENTS_FILE = PATH + "departments.csv";
     static string STUDENTS_FILE = PATH + "students.csv";
     static string TEACHERS_FILE = PATH + "teachers.csv";
     static string COURSES_FILE = PATH + "courses.csv";

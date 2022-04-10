@@ -13,6 +13,7 @@ class Menu {
 private:
 public:
     Menu();
+    void departmentMenu() const;
     void courseMenu() const;
     void subjectMenu() const;
     void teacherMenu() const;

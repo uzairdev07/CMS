@@ -27,4 +27,4 @@ add_executable(
         objects/students/student.cpp
         objects/students/Students.h
         objects/students/Students.cpp
-        helpers/style.cpp utilities/menu.cpp utilities/menu.h)
+        helpers/style.cpp utilities/menu.cpp utilities/menu.h objects/department/department.cpp objects/department/department.h objects/department/Departments.cpp objects/department/Departments.h)

@@ -5,6 +5,7 @@
 #include "course.h"
 #include "../../CSVParser/CSVParser.h"
 #include "../../helpers/Const.cpp"
+#include "../department/Departments.h"
 #include <iomanip>
 
 /*
@@ -19,8 +20,8 @@
 course::course() {}
 
 // ? Overloaded Constructor
-course::course(int id, string name, float fee, string startDate)
-        :id(id), name(name), fee(fee), startDate(startDate)
+course::course(int id, string name, float fee, string startDate, int dep_id)
+        :id(id), name(name), fee(fee), startDate(startDate), dep_id{dep_id}
 {}
 
 // * Operator Overloading
@@ -35,6 +36,10 @@ istream &operator>>(istream &is, course &course) {
     is >> course.fee;
     cout << "Enter Start Date: ";
     is >> course.startDate;
+    Departments departments;
+    departments.getTotalDepartments();
+    cout << "Enter Department Id: ";
+    is >> course.dep_id;
     return is;
 }
 
@@ -44,7 +49,8 @@ ostream &operator<<(ostream &os, const course &course) {
        << course.getId() << setw(COL_WIDTH)
        << course.getName() << setw(COL_WIDTH)
        << course.getFee() << setw(COL_WIDTH)
-       << course.getStartDate();
+       << course.getStartDate() << setw(COL_WIDTH)
+       << course.getDepartmentId();
     return os;
 }
 
@@ -67,6 +73,8 @@ string course::getCourse() const {
     ss << this->getFee();
     ss << ",";
     ss << this->getStartDate();
+    ss << ",";
+    ss << this->getDepartmentId();
     ss << ",";
     ss << "\n";
     string course = ss.str();
@@ -105,6 +113,14 @@ const string &course::getStartDate() const {
 
 void course::setStartDate(const string &startDate) {
     course::startDate = startDate;
+}
+
+const int &course::getDepartmentId() const {
+    return dep_id;
+}
+
+void course::setDepartmentId(const int dep_id) {
+    this->dep_id = dep_id;
 }
 
 // ? Destructor

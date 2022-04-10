@@ -7,6 +7,7 @@
 #include "../../helpers/style.cpp"
 #include "../../helpers/Const.cpp"
 #include "../../utilities/menu.h"
+#include "../department/Departments.h"
 #include <conio.h>
 
 /*
@@ -27,7 +28,7 @@ Courses::Courses() {
 
 // * Methods
 
-// ? Print all Subjects
+// ? Print all Courses
 void Courses::getTotalCourses() const {
     CSVParser parser;
     vector<CSVRow> header = parser.getHeader(COURSES_FILE);
@@ -37,13 +38,15 @@ void Courses::getTotalCourses() const {
              << setw(COL_WIDTH) << col.getString(1)
              << setw(COL_WIDTH) << col.getString(2)
              << setw(COL_WIDTH) << col.getString(3)
+             << setw(COL_WIDTH) << col.getString(4)
              << endl;
-    printLine(60);
+    printLine(75);
     for ( auto course: courses )
         cout << setw(COL_WIDTH) << course.getInt(0)
              << setw(COL_WIDTH) << course.getString(1)
              << setw(COL_WIDTH) << course.getInt(2)
              << setw(COL_WIDTH) << course.getString(3)
+             << setw(COL_WIDTH) << getDepartmentName(course.getInt(4))
              << endl;
 }
 
@@ -58,14 +61,15 @@ void Courses::searchById(int id) {
                         row.getInt(0),
                         row.getString(1),
                         row.getDouble(2),
-                        row.getString(3)
+                        row.getString(3),
+                        row.getInt(4)
                 )
         );
     }
     if (records.size() != 0) {
         cerr << "No Record Founded Ye! ...";
         cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH)
-             << "Start Date" << endl;
+             << "Start Date" << setw(COL_WIDTH) << "Department Id" << endl;
         for ( auto cr: records )
             cout << setw(COL_WIDTH) << cr << endl;
     } else
@@ -83,7 +87,8 @@ vector<course> Courses::searchCourse(string data, int index) {
                         row.getInt(0),
                         row.getString(1),
                         row.getDouble(2),
-                        row.getString(3)
+                        row.getString(3),
+                        row.getInt(4)
                 )
         );
     if (cr.size() == 0)
@@ -103,7 +108,8 @@ vector<course> Courses::searchCourse(float data, int index) {
                             row.getInt(0),
                             row.getString(1),
                             row.getDouble(2),
-                            row.getString(3)
+                            row.getString(3),
+                            row.getInt(4)
                     )
             );
     if (st.size() == 0)
@@ -116,7 +122,7 @@ void Courses::searchByName(string name) {
     vector<course> records = searchCourse(name, 1);
     if (records.size() != 0) {
         cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH)
-             << "Start Date" << endl;
+             << "Start Date" << setw(COL_WIDTH) << "Department Name" << endl;
         for ( auto cr: records )
             cout << setw(COL_WIDTH) << cr << endl;
     }
@@ -127,7 +133,7 @@ void Courses::searchByFee(float fee) {
     vector<course> records = searchCourse(fee, 2);
     if (records.size() != 0) {
         cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH)
-             << "Start Date" << endl;
+             << "Start Date" << setw(COL_WIDTH) << "Department Name" << endl;
         for ( auto cr: records )
             cout << setw(COL_WIDTH) << cr << endl;
     }
@@ -138,17 +144,49 @@ void Courses::searchByStartDate(string start_date) {
     vector<course> records = searchCourse(start_date, 3);
     if (records.size() != 0) {
         cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH)
-             << "Start Date" << endl;
+             << "Start Date" << setw(COL_WIDTH) << "Department Name" << endl;
         for ( auto cr: records )
             cout << setw(COL_WIDTH) << cr << endl;
     }
 }
 
-// ? Get Number of Subjects
+// ? Search Course by Department Name
+void Courses::searchByDepartmentName(const string dep_name) const {
+    CSVParser parser;
+    vector<CSVRow> records = parser.search(COURSES_FILE, dep_name, 4);
+    vector<course> courses;
+    for (auto row : records)
+        courses.push_back(
+                course(
+                        row.getInt(0),
+                        row.getString(1),
+                        row.getDouble(2),
+                        row.getString(3),
+                        row.getInt(4)
+                )
+        );
+    if (courses.size() != 0) {
+        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Fee" << setw(COL_WIDTH)
+             << "Start Date" << setw(COL_WIDTH) << "Department Name" << endl;
+        for (auto cr: courses)
+            cout << setw(COL_WIDTH) << cr << endl;
+    } else
+        cerr << "No Records founded yet!..." << endl;
+}
+
+// ? Get Number of Courses
 int Courses::getSize() const {
     CSVParser parser;
     vector<CSVRow> courses = parser.read(COURSES_FILE);
     return courses.size();
+}
+
+// ? Get Department Name by ID
+string Courses::getDepartmentName(const int dep_id) const {
+    CSVParser parser;
+    vector<CSVRow> records = parser.search(DEPARTMENTS_FILE, dep_id, 0);
+    for (auto row : records)
+        return row.getString(1);
 }
 
 // ? Display Menu
@@ -170,7 +208,7 @@ void Courses::select() {
     displayMenu();
     int id, key;
     float fee;
-    string name, startDate;
+    string name, startDate, dep_name;
     course c;
     int n;
     again:
@@ -229,6 +267,13 @@ void Courses::select() {
                     cin >> startDate;
                     searchByStartDate(startDate);
                     break;
+                case 5:
+                    clear();
+                    getTotalCourses();
+                    cout << "Enter Department Name: ";
+                    cin >> dep_name;
+                    searchByDepartmentName(dep_name);
+                    break;
             }
             cout << "Press 0 to go back: ";
             key = getche();
@@ -252,7 +297,7 @@ void Courses::select() {
         goto display;
 }
 
-// ? Get Course ID
+// ? Get Course ID by Name
 int Courses::getCourseId(const string course_name) const {
     CSVParser parser;
     vector<CSVRow> records = parser.read(COURSES_FILE);

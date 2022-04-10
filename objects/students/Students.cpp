@@ -181,7 +181,6 @@ int Students::getSize() const {
 // ? Get Course Name By Id
 string Students::getCourseName(int id) const {
     CSVParser parser;
-    string course_name;
     vector<CSVRow> records = parser.search(COURSES_FILE, id, 0);
     for (auto row : records)
         return row.getString(1);

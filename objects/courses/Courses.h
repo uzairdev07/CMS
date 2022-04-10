@@ -8,7 +8,6 @@
 #include <iostream>
 #include <vector>
 #include "course.h"
-
 using namespace std;
 
 class Courses {
@@ -27,6 +26,7 @@ private:
             "Search By Name",
             "Search By Fee",
             "Search By Date",
+            "Search By Department Name"
     };
 public:
     // * Constructor
@@ -51,10 +51,15 @@ public:
 
     void searchByStartDate(string);
 
+    void searchByDepartmentName(const string) const;
+
     int getSize() const;
 
-    // ? Get Course ID
+    // ? Get Course ID by Name
     int getCourseId(const string course_name) const;
+
+    // ? Get Department Name by ID
+    string getDepartmentName(const int dep_id) const;
 
     // ? Menu
     void displayMenu() const;

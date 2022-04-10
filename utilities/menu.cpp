@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <conio.h>
 #include "../helpers/style.cpp"
+#include "../objects/department/Departments.h"
 #include "../objects/courses/Courses.h"
 #include "../objects/subjects/Subjects.h"
 #include "../objects/teachers/Teachers.h"
@@ -17,6 +18,7 @@ Menu::Menu() {
     clear();
     displayMain(
             vector<string>{
+                    "Department Menu",
                     "Course Menu",
                     "Subject Menu",
                     "Teacher Menu",
@@ -37,17 +39,23 @@ void Menu::displayMain(vector<string> list) const {
         exit(0);
     switch (choice) {
         case 1:
-            clear();
-            courseMenu();
+            departmentMenu();
         case 2:
-            subjectMenu();
+            courseMenu();
         case 3:
-            teacherMenu();
+            subjectMenu();
         case 4:
-            studentMenu();
+            teacherMenu();
         case 5:
+            studentMenu();
+        case 6:
             libraryMenu();
     }
+}
+
+void Menu::departmentMenu() const {
+    Departments departments;
+    departments.select();
 }
 
 void Menu::courseMenu() const {
@@ -70,9 +78,9 @@ void Menu::studentMenu() const {
     students.select();
 }
 
+
 void Menu::libraryMenu() const {
 }
-
 
 Menu::~Menu() {
 

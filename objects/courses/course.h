@@ -15,11 +15,12 @@ private:
     string name;
     float fee;
     string startDate;
+    int dep_id;
 public:
     // * Constructor
     course();
     // * Overloaded Constructor
-    course(int id, string name, float fee, string startDate);
+    course(int id, string name, float fee, string startDate, int dep_id);
 
     // * Operator Overloading
 
@@ -49,6 +50,10 @@ public:
     const string &getStartDate() const;
 
     void setStartDate(const string &startDate);
+
+    const int &getDepartmentId() const;
+
+    void setDepartmentId(const int dep_id);
 
     // * Destructor
     ~course();
