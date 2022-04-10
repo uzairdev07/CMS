@@ -3,7 +3,9 @@
 //
 
 #include "CSVParser.h"
+#include <iomanip>
 #include "../helpers/Const.cpp"
+#include "../helpers/style.cpp"
 
 CSVParser::CSVParser() {}
 
@@ -68,7 +70,6 @@ vector<CSVRow> CSVParser::search(string file, int data, int index, bool isHeader
     inputFile.close();
     return rows;
 }
-
 // ? Search Float Data
 vector<CSVRow> CSVParser::search(string file, float data, int index, bool isHeader) {
     vector<CSVRow> rows {};
@@ -88,6 +89,7 @@ vector<CSVRow> CSVParser::search(string file, float data, int index, bool isHead
     inputFile.close();
     return rows;
 }
+
 // ? Search String Data
 vector<CSVRow> CSVParser::search(string file, string data, int index, bool isHeader) {
     vector<CSVRow> rows {};

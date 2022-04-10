@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include "student.h"
+#include "../../CSVParser/CSVParser.h"
 using namespace std;
 
 class Students {
@@ -38,13 +39,14 @@ public:
     // * Methods
     void getTotalStudents() const;
     void searchById(int);
-    vector<student> searchStudent(string, int);
+    vector<CSVRow> searchStudent(string, int);
     void searchByName(string);
     void searchByDob(string);
     void searchByContact(string);
     void searchByAddress(string);
     void searchByCourse(string);
     int getSize() const;
+    void printStudents(vector<CSVRow> records) const;
 
     // ? Get Course By Id
     string getCourseName(int id) const;

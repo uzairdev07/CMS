@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <vector>
+#include "../../CSVParser/CSVParser.h"
 #include "course.h"
 using namespace std;
 
@@ -38,28 +39,21 @@ public:
 
     // * Methods
     void getTotalCourses() const;
-
     void searchById(int id);
-
-    vector<course> searchCourse(string, int);
-
-    vector<course> searchCourse(float, int);
-
+    vector<CSVRow> searchCourse(string, int);
+    vector<CSVRow> searchCourse(float, int);
     void searchByName(string);
-
     void searchByFee(float);
-
     void searchByStartDate(string);
-
     void searchByDepartmentName(const string) const;
-
     int getSize() const;
+    void printCourses(vector<CSVRow> records) const;
 
     // ? Get Course ID by Name
     int getCourseId(const string course_name) const;
 
     // ? Get Department Name by ID
-    string getDepartmentName(const int dep_id) const;
+    string getDepartmentName(int dep_id) const;
 
     // ? Menu
     void displayMenu() const;

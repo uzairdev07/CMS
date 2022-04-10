@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <vector>
+#include "../../CSVParser/CSVParser.h"
 #include "subject.h"
 using namespace std;
 
@@ -40,6 +41,7 @@ public:
     void searchByName(string name);
     void searchByCourse(string);
     int getSize() const;
+    void printSubjects(vector<CSVRow> records) const;
 
     // ? Get Course By Id
     string getCourseName(int id) const;

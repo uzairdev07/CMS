@@ -13,5 +13,8 @@ static void printLine(int n) {
 }
 
 static void clear() {
+    // * For Windows
     system("cls");
+    // * For Linux
+//    system("clear");
 }

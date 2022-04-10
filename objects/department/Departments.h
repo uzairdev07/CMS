@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <vector>
+#include "../../CSVParser/CSVParser.h"
 #include "department.h"
 using namespace std;
 
@@ -35,14 +36,11 @@ public:
 
     // * Methods
     void getTotalDepartments() const;
-
     void searchById(int id);
-
-    vector<department> searchDepartment(string, int);
-
+    vector<CSVRow> searchDepartment(string, int);
     void searchByName(string);
-
     int getSize() const;
+    void printDepartments(vector<CSVRow> records) const;
 
     // ? Get Department Id By Name
     int getDepartmentId(const string &name) const;

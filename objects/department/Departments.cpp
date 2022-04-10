@@ -3,7 +3,6 @@
 //
 
 #include "Departments.h"
-#include "../../CSVParser/CSVParser.h"
 #include "../../helpers/style.cpp"
 #include "../../helpers/Const.cpp"
 #include "../../utilities/menu.h"
@@ -47,49 +46,20 @@ void Departments::getTotalDepartments() const {
 void Departments::searchById(int id) {
     CSVParser parser;
     vector<CSVRow> rows = parser.search(DEPARTMENTS_FILE, id, 0);
-    vector<department> records;
-    for (auto row: rows) {
-        records.push_back(
-                department(
-                        row.getInt(0),
-                        row.getString(1)
-                )
-        );
-    }
-    if (records.size() != 0) {
-        cerr << "No Record Founded Ye! ...";
-        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << endl;
-        for ( auto cr: records )
-            cout << setw(COL_WIDTH) << cr << endl;
-    } else
-        cerr << "No Record Founded Yet! ...";
+    printDepartments(rows);
 }
 
 // ? Search department by Data
-vector<department> Departments::searchDepartment(string data, int index) {
+vector<CSVRow> Departments::searchDepartment(string data, int index) {
     CSVParser parser;
-    vector<CSVRow> Departments = parser.search(DEPARTMENTS_FILE, data, index);
-    vector<department> cr;
-    for ( auto row: Departments )
-        cr.push_back(
-                department(
-                        row.getInt(0),
-                        row.getString(1)
-                )
-        );
-    if (cr.size() == 0)
-        cerr << "No Record Founded Ye! ...";
-    return cr;
+    vector<CSVRow> departments = parser.search(DEPARTMENTS_FILE, data, index);
+    return departments;
 }
 
 // ? Search Department by Name
 void Departments::searchByName(string name) {
-    vector<department> records = searchDepartment(name, 1);
-    if (records.size() != 0) {
-        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << endl;
-        for ( auto cr: records )
-            cout << setw(COL_WIDTH) << cr << endl;
-    }
+    vector<CSVRow> records = searchDepartment(name, 1);
+    printDepartments(records);
 }
 
 // ? Get Number of Departments
@@ -99,13 +69,23 @@ int Departments::getSize() const {
     return Departments.size();
 }
 
+void Departments::printDepartments(vector<CSVRow> records) const {
+    if (records.size() != 0) {
+        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << endl;
+        for ( auto student: records)
+            cout << setw(COL_WIDTH) << student.getInt(0)
+                 << setw(COL_WIDTH) << student.getString(1)
+                 << endl;
+    } else
+        cerr << "No Records founded yet!..." << endl;
+}
+
 // ? Get Department ID by Name
 int Departments::getDepartmentId(const string &name) const {
     CSVParser parser;
-    vector<CSVRow> records = parser.read(DEPARTMENTS_FILE);
+    vector<CSVRow> records = parser.search(DEPARTMENTS_FILE, name, 1);
     for (auto row : records)
-        if (row.getString(1) == name)
-            return row.getInt(0);
+        return row.getInt(0);
 }
 
 // ? Display Menu

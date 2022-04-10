@@ -4,7 +4,6 @@
 
 #include "Students.h"
 #include "../courses/Courses.h"
-#include "../../CSVParser/CSVParser.h"
 #include "../../helpers/Const.cpp"
 #include "../../helpers/style.cpp"
 #include "../../utilities/menu.h"
@@ -58,91 +57,41 @@ void Students::getTotalStudents() const {
 void Students::searchById(int id) {
     CSVParser parser;
     vector<CSVRow> students = parser.search(STUDENTS_FILE, id, 0);
-    vector<student> records;
-    for ( CSVRow row: students )
-        records.push_back(
-                student(
-                        row.getInt(0),
-                        row.getString(1),
-                        row.getString(2),
-                        row.getString(3),
-                        row.getString(4),
-                        row.getInt(5)
-                )
-        );
-    if (records.size() != 0) {
-        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
-             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Course Id" << endl;
-        for ( auto s: records )
-            cout << setw(COL_WIDTH) << s << endl;
-    } else
-        cerr << "No Record Founded Ye! ...";
+    printStudents(students);
 }
 
 // ? Search by Student data
-vector<student> Students::searchStudent(string data, int index) {
+vector<CSVRow> Students::searchStudent(string data, int index) {
     CSVParser parser;
     vector<CSVRow> students = parser.search(STUDENTS_FILE, data, index);
-    vector<student> st;
-    for ( CSVRow row: students )
-        st.push_back(
-                student(
-                        row.getInt(0),
-                        row.getString(1),
-                        row.getString(2),
-                        row.getString(3),
-                        row.getString(4),
-                        row.getInt(5)
-                )
-        );
-    if (st.size() == 0) {
+    if (students.size() == 0) {
         cerr << "No Record Founded Yet! ...";
     }
-    return st;
+    return students;
 }
 
 // ? Search By Student Name
 void Students::searchByName(string name) {
-    vector<student> records = searchStudent(name, 1);
-    if (records.size() != 0) {
-        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
-             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Course Id" << endl;
-        for ( auto s: records )
-            cout << setw(COL_WIDTH) << s << endl;
-    }
+    vector<CSVRow> records = searchStudent(name, 1);
+    printStudents(records);
 }
 
 // ? Search By Student DOB
 void Students::searchByDob(string dob) {
-    vector<student> records = searchStudent(dob, 2);
-    if (records.size() != 0) {
-        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
-             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Course Id" << endl;
-        for ( auto s: records )
-            cout << setw(COL_WIDTH) << s << endl;
-    }
+    vector<CSVRow> records = searchStudent(dob, 2);
+    printStudents(records);
 }
 
 // ? Search By Student Contact
 void Students::searchByContact(string contact) {
-    vector<student> records = searchStudent(contact, 3);
-    if (records.size() != 0) {
-        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
-             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Course Id" << endl;
-        for ( auto s: records )
-            cout << setw(COL_WIDTH) << s << endl;
-    }
+    vector<CSVRow> records = searchStudent(contact, 3);
+    printStudents(records);
 }
 
 // ? Search By Student Address
 void Students::searchByAddress(string address) {
-    vector<student> records = searchStudent(address, 4);
-    if (records.size() != 0) {
-        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
-             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Course Id" << endl;
-        for ( auto s: records )
-            cout << setw(COL_WIDTH) << s << endl;
-    }
+    vector<CSVRow> records = searchStudent(address, 4);
+    printStudents(records);
 }
 
 // ? Search By Student Course
@@ -151,24 +100,7 @@ void Students::searchByCourse(string course_name) {
     Courses courses;
     int id = courses.getCourseId(course_name);
     vector<CSVRow> records = parser.search(STUDENTS_FILE, id, 5);
-    vector<student> students;
-    for (auto row : records)
-        students.push_back(
-                student(
-                        row.getInt(0),
-                        row.getString(1),
-                        row.getString(2),
-                        row.getString(3),
-                        row.getString(4),
-                        row.getInt(5)
-                )
-        );
-    if (students.size() != 0) {
-        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
-             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Course Id" << endl;
-        for ( auto s: students )
-            cout << setw(COL_WIDTH) << s << endl;
-    }
+    printStudents(records);
 }
 
 // ? Get Number of Students
@@ -184,6 +116,22 @@ string Students::getCourseName(int id) const {
     vector<CSVRow> records = parser.search(COURSES_FILE, id, 0);
     for (auto row : records)
         return row.getString(1);
+}
+
+void Students::printStudents(vector<CSVRow> records) const {
+    if (records.size() != 0) {
+        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
+             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Course Name" << endl;
+        for ( auto student: records)
+            cout << setw(COL_WIDTH) << student.getInt(0)
+                 << setw(COL_WIDTH) << student.getString(1)
+                 << setw(COL_WIDTH) << student.getString(2)
+                 << setw(COL_WIDTH) << student.getString(3)
+                 << setw(COL_WIDTH) << student.getString(4)
+                 << setw(COL_WIDTH) << getCourseName(student.getInt(5))
+                 << endl;
+    } else
+        cerr << "No Records founded yet!..." << endl;
 }
 
 // ? Display Menu
