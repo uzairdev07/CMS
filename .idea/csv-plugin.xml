@@ -38,6 +38,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\files\Books.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\files\courses.csv">
           <value>
             <Attribute>
