@@ -119,7 +119,15 @@ void Date::setDate(int d, int m, int y) {
         day = (d >= 1 && d <= days[month]) ? d : 1;
 }
 
-int Date::endOfMonth(int d) {
+void Date::now() {
+    time_t time = time;
+    tm *tm = localtime(&time);
+    day = tm->tm_mday;
+    month = tm->tm_mon;
+    year = tm->tm_year;
+}
+
+    int Date::endOfMonth(int d) {
     if (month == 2 && leapYear(year))
         return d == 29;                 // * Last day of Feb in leap year
     else

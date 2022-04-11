@@ -6,6 +6,7 @@
 #define CMS_LOCALDATETIME_H
 
 #include <iostream>
+#include <ctime>
 #include "Date.h"
 #include "Time.h"
 

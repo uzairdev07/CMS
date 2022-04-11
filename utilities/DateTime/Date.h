@@ -43,6 +43,7 @@ public:
     // * Methods
 
     void setDate(int d, int m, int y);
+    void now();
     // ? Print Date in Day-Month-Year
     void print() const;
     // ? Increment Help
