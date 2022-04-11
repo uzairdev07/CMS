@@ -19,6 +19,8 @@ private:
             "Update",
             "Delete",
             "Search",
+            "Lend Book",
+            "Return Book",
             "Display All"
     };
     vector<string> searchOptions{
@@ -46,6 +48,8 @@ public:
     void searchByPages(int);
     int getSize() const;
     void printBooks(vector<CSVRow> records) const;
+    void lendBook(int book_id, int student_id);
+    void returnBook();
 
     // ? Menu
     void displayMenu() const;
