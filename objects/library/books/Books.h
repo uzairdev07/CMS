@@ -48,7 +48,7 @@ public:
     void searchByPages(int);
     int getSize() const;
     void printBooks(vector<CSVRow> records) const;
-    void lendBook(int book_id, int student_id);
+    void lendBook();
     void returnBook();
 
     // ? Menu

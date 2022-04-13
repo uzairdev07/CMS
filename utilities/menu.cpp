@@ -11,6 +11,7 @@
 #include "../objects/subjects/Subjects.h"
 #include "../objects/teachers/Teachers.h"
 #include "../objects/students/Students.h"
+#include "../objects/library/books/Books.h"
 
 using namespace std;
 
@@ -80,6 +81,8 @@ void Menu::studentMenu() const {
 
 
 void Menu::libraryMenu() const {
+    Books books;
+    books.select();
 }
 
 Menu::~Menu() {

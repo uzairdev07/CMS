@@ -3,10 +3,11 @@
 //
 
 #include "Books.h"
-#include "../../courses/Courses.h"
 #include "../../../helpers/Const.cpp"
 #include "../../../helpers/style.cpp"
 #include "../../../utilities/menu.h"
+#include "../../students/Students.h"
+#include "../Lend.h"
 #include <conio.h>
 
 /*
@@ -115,6 +116,24 @@ void Books::printBooks(vector<CSVRow> records) const {
         cerr << "No Records founded yet!..." << endl;
 }
 
+// ? Lend a book to student
+
+void Books::lendBook() {
+    getTotalBooks();
+    int book_id, student_id;
+    cout << "Enter Book Id: ";
+    cin >> book_id;
+    Students students;
+    students.getTotalStudents();
+    cout << "Enter Student Id: ";
+    cin >> student_id;
+    Lend lend;
+    lend.lendBook(LEND_BOOKS_FILE, book_id, student_id);
+    cout << "Book Lend Successfully...";
+}
+
+// ? Return a book from student
+
 // ? Display Menu
 void Books::displayMenu() const {
     for ( int i = 0; i < options.size(); i++ )
@@ -200,6 +219,14 @@ void Books::select() {
                 goto searchMenu;
             break;
         case 5:
+            clear();
+            lendBook();
+            break;
+        case 6:
+            clear();
+            getTotalBooks();
+            break;
+        case 7:
             clear();
             getTotalBooks();
             break;

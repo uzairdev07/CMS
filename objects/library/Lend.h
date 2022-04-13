@@ -16,13 +16,16 @@ private:
     Date issueDate;
     Date returnDate;
     int studentId;
+    // * Get Lend Book Data
+    string getData() const;
 public:
     // * Default Constructor
-    Lend(int bookId, const Date &issueDate, const Date &returnDate, int studentId);
+    Lend(int book_id = 0, const Date &issue_Date = Date(1, 1, 1996), const Date &return_Date = Date(7, 1, 1996), int student_id = 0);
     // * Overloaded Constructors
 
     // * Methods
-    void lendBook(int book_id, int student_id);
+    void lendBook(string file, int book_id, int student_id);
+    void setLendBook(int book_id, const Date &issue_Date, const Date &return_Date, int student_id);
     // ? Getters and Setters
     int getBookId() const;
 
