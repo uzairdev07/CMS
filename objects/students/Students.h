@@ -18,6 +18,7 @@ private:
             "Update",
             "Delete",
             "Search",
+            "Take Attendance",
             "Display All"
     };
     vector<string> searchOptions {
@@ -47,6 +48,7 @@ public:
     void searchByCourse(string);
     int getSize() const;
     void printStudents(vector<CSVRow> records) const;
+    void takeAttendance();
 
     // ? Get Course By Id
     string getCourseName(int id) const;

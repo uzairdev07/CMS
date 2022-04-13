@@ -38,4 +38,4 @@ add_executable(
         utilities/menu.h
         helpers/style.cpp
         helpers/Const.cpp
-        objects/library/Lend.cpp objects/library/Lend.h utilities/DateTime/LocalDateTime.cpp utilities/DateTime/LocalDateTime.h utilities/DateTime/Time.cpp utilities/DateTime/Time.h utilities/DateTime/Date.cpp utilities/DateTime/Date.h)
+        objects/library/Lend.cpp objects/library/Lend.h utilities/DateTime/LocalDateTime.cpp utilities/DateTime/LocalDateTime.h utilities/DateTime/Time.cpp utilities/DateTime/Time.h utilities/DateTime/Date.cpp utilities/DateTime/Date.h utilities/Attendance.cpp utilities/Attendance.h)

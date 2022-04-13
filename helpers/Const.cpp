@@ -15,6 +15,7 @@ using namespace std;
     static string SUBJECTS_FILE = PATH + "subjects.csv";
     static string BOOKS_FILE = PATH + "books.csv";
     static string LEND_BOOKS_FILE = PATH + "lendBooks.csv";
+    static string STUDENTS_ATTENDANCE_FILE = PATH + "studentAttendance.csv";
 
     static const int WIDTH = 50;
     static const int COL_WIDTH = 15;

@@ -7,6 +7,7 @@
 #include "../../helpers/Const.cpp"
 #include "../../helpers/style.cpp"
 #include "../../utilities/menu.h"
+#include "../../utilities/Attendance.h"
 #include <conio.h>
 
 /*
@@ -114,7 +115,7 @@ int Students::getSize() const {
 string Students::getCourseName(int id) const {
     CSVParser parser;
     vector<CSVRow> records = parser.search(COURSES_FILE, id, 0);
-    for (auto row : records)
+    for ( auto row: records )
         return row.getString(1);
 }
 
@@ -122,7 +123,7 @@ void Students::printStudents(vector<CSVRow> records) const {
     if (records.size() != 0) {
         cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
              << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Course Name" << endl;
-        for ( auto student: records)
+        for ( auto student: records )
             cout << setw(COL_WIDTH) << student.getInt(0)
                  << setw(COL_WIDTH) << student.getString(1)
                  << setw(COL_WIDTH) << student.getString(2)
@@ -134,6 +135,31 @@ void Students::printStudents(vector<CSVRow> records) const {
         cerr << "No Records founded yet!..." << endl;
 }
 
+void Students::takeAttendance() {
+    getTotalStudents();
+    vector<int> absent_students;
+    Attendance attendance;
+    int student_id;
+    int n{};
+    input:
+    cout << "Enter the student id (Press 0 to save): ";
+    n = getche();
+    n -= 48;
+    if (n == 0)
+        goto con;
+    else {
+        absent_students.push_back(n);
+        cout << endl;
+        goto input;
+    }
+    con:
+    for (auto id: absent_students) {
+        cout << "Student Id: " << id << endl;
+        attendance.takeAttendance(id, 0);
+    }
+    cout << "Attendance taken successfully!" << endl;
+}
+
 // ? Display Menu
 void Students::displayMenu() const {
     for ( int i = 0; i < options.size(); i++ )
@@ -142,7 +168,7 @@ void Students::displayMenu() const {
 
 // ? Display Search Menu
 void Students::displaySearchMenu() const {
-    for (int i = 0; i < searchOptions.size(); i++)
+    for ( int i = 0; i < searchOptions.size(); i++ )
         cout << setw(WIDTH) << i + 1 << ". " << searchOptions.at(i) << endl;
 }
 
@@ -233,6 +259,10 @@ void Students::select() {
                 goto searchMenu;
             break;
         case 5:
+            clear();
+            takeAttendance();
+            break;
+        case 6:
             clear();
             getTotalStudents();
             break;
