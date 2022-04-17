@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="CMS"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="E:/WorkFiles/Work/CMS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="CMS">
+				<Option output="E:/WorkFiles/Work/CMS/cmake-build-debug/CMS.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/WorkFiles/Work/CMS/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 CMS"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="CMS/fast">
+				<Option output="E:/WorkFiles/Work/CMS/cmake-build-debug/CMS.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/WorkFiles/Work/CMS/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 CMS/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="E:/WorkFiles/Work/CMS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="E:/WorkFiles/Work/CMS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;E:/WorkFiles/Work/CMS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="E:/WorkFiles/Work/CMS/CSVParser/CSVParser.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/CSVParser/CSVParser.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/CSVParser/CSVRow.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/CSVParser/CSVRow.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/helpers/Const.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/helpers/style.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/main.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/courses/Courses.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/courses/Courses.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/courses/course.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/courses/course.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/department/Departments.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/department/Departments.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/department/department.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/department/department.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/library/Lend.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/library/Lend.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/library/books/Books.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/library/books/Books.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/library/books/book.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/library/books/book.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/students/Students.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/students/Students.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/students/student.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/students/student.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/subjects/Subjects.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/subjects/Subjects.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/subjects/subject.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/subjects/subject.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/teachers/Teachers.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/teachers/Teachers.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/teachers/teacher.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/objects/teachers/teacher.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/utilities/Attendance.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/utilities/Attendance.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/utilities/DateTime/Date.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/utilities/DateTime/Date.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/utilities/DateTime/LocalDateTime.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/utilities/DateTime/LocalDateTime.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/utilities/DateTime/Time.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/utilities/DateTime/Time.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/utilities/menu.cpp">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/utilities/menu.h">
+			<Option target="CMS"/>
+		</Unit>
+		<Unit filename="E:/WorkFiles/Work/CMS/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
