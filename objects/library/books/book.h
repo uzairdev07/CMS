@@ -16,14 +16,6 @@ private:
     string author;
     string title;
     int pages;
-    // * Header Cols
-    vector<string> col_names = {
-            "Id",
-            "Author",
-            "Title",
-            "Pages"
-    };
-
 public:
     // * Constructors
     book();

@@ -29,17 +29,11 @@ Departments::Departments() {
 // ? Print all Subjects
 void Departments::getTotalDepartments() const {
     CSVParser parser;
-    vector<CSVRow> header = parser.getHeader(DEPARTMENTS_FILE);
     vector<CSVRow> departments = parser.read(DEPARTMENTS_FILE);
-    for ( auto col: header )
-        cout << setw(COL_WIDTH) << col.getString(0)
-             << setw(COL_WIDTH) << col.getString(1)
-             << endl;
-    printLine(30);
-    for ( auto department: departments )
-        cout << setw(COL_WIDTH) << department.getInt(0)
-             << setw(COL_WIDTH) << department.getString(1)
-             << endl;
+    if (!(departments.size() == 0))
+        printDepartments(departments);
+    else
+        cerr << "No Record Founded Ye! ...";
 }
 
 // ? Search Department by Id
@@ -70,12 +64,24 @@ int Departments::getSize() const {
 }
 
 void Departments::printDepartments(vector<CSVRow> records) const {
+    // * values for controlling format
+    const int STR_WIDTH = 15;
+    const int INT_WIDTH = 7;
+    const int DBL_WIDTH = 12;
+    const int NUM_FIELDS = 2;
+    const string SEP = " |";
+    const int TOTAL_WIDTH = STR_WIDTH * 2 + INT_WIDTH * 2 + DBL_WIDTH * 3 + SEP.size() * NUM_FIELDS;
+    const string LINE = SEP + string(TOTAL_WIDTH - 1, '-') + '|';
     if (records.size() != 0) {
-        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << endl;
-        for ( auto student: records)
-            cout << setw(COL_WIDTH) << student.getInt(0)
-                 << setw(COL_WIDTH) << student.getString(1)
-                 << endl;
+        cout << LINE << '\n' << SEP
+             << setw(INT_WIDTH) << col_names[0] << SEP
+             << setw(STR_WIDTH) << col_names[1] << SEP
+             << '\n' << LINE << '\n';
+        for (auto record: records)
+            cout << SEP << setw(INT_WIDTH) << record.getInt(0)
+                 << SEP << setw(STR_WIDTH) << record.getString(1)
+                 << SEP << '\n';
+        cout << LINE << '\n';
     } else
         cerr << "No Records founded yet!..." << endl;
 }

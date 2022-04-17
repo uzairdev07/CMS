@@ -29,6 +29,15 @@ private:
             "Search By Address",
             "Search By Course Name",
     };
+    // * Header Cols
+    vector<string> col_names {
+            "Roll No",
+            "Name",
+            "DOB",
+            "Contact",
+            "Address",
+            "Course Name"
+    };
 public:
     // * Constructor
     Students();

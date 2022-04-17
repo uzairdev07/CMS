@@ -30,6 +30,15 @@ private:
             "Search By Role",
             "Search By Subject Name"
     };
+    // * Header Cols
+    vector<string> col_names {
+            "Roll No",
+            "Name",
+            "DOB",
+            "Contact",
+            "Address",
+            "Course Name"
+    };
 public:
     // * Constructor
     Teachers();

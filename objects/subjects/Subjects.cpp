@@ -30,19 +30,12 @@ Subjects::Subjects() {
 // ? Print all Subjects
 void Subjects::getTotalSubjects() const {
     CSVParser parser;
-    vector<CSVRow> header = parser.getHeader(SUBJECTS_FILE);
     vector<CSVRow> subjects = parser.read(SUBJECTS_FILE);
-    for ( auto col: header )
-        cout << setw(COL_WIDTH) << col.getString(0)
-             << setw(COL_WIDTH) << col.getString(1)
-             << setw(COL_WIDTH) << "Course_Name"
-             << endl;
-    printLine(45);
-    for ( auto subject: subjects )
-        cout << setw(COL_WIDTH) << subject.getInt(0)
-             << setw(COL_WIDTH) << subject.getString(1)
-             << setw(COL_WIDTH) << getCourseName(subject.getInt(2))
-             << endl;
+    if (!(subjects.size() == 0))
+        printSubjects(subjects);
+    else
+        cerr << "No Record Founded Ye! ...";
+
 }
 
 // ? Search Course by Id
@@ -76,13 +69,26 @@ int Subjects::getSize() const {
 }
 
 void Subjects::printSubjects(vector<CSVRow> records) const {
+    // values for controlling format
+    const int STR_WIDTH = 10;
+    const int INT_WIDTH = 5;
+    const int DBL_WIDTH = 8;
+    const int NUM_FIELDS = 3;
+    const string SEP = " |";
+    const int TOTAL_WIDTH = STR_WIDTH * 2 + INT_WIDTH * 2 + DBL_WIDTH * 3 + SEP.size() * NUM_FIELDS;
+    const string LINE = SEP + string(TOTAL_WIDTH - 1, '-') + '|';
     if (records.size() != 0) {
-        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "Course Name" << endl;
+        cout << LINE << '\n' << SEP
+             << setw(INT_WIDTH) << col_names[0] << SEP
+             << setw(STR_WIDTH) << col_names[1] << SEP
+             << setw(STR_WIDTH) << col_names[2] << SEP
+             << '\n' << LINE << '\n';
         for (auto record: records)
-            cout << setw(COL_WIDTH) << record.getInt(0)
-                 << setw(COL_WIDTH) << record.getString(1)
-                 << setw(COL_WIDTH) << getCourseName(record.getInt(2))
-                 << endl;
+            cout << SEP << setw(INT_WIDTH) << record.getInt(0)
+                 << SEP << setw(STR_WIDTH) << record.getString(1)
+                 << SEP << setw(STR_WIDTH) << getCourseName(record.getInt(2))
+                 << SEP << '\n';
+        cout << LINE << '\n';
     } else
         cerr << "No Records founded yet!..." << endl;
 }

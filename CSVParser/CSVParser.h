@@ -18,9 +18,9 @@ public:
 
     // ? Methods
     vector<CSVRow> read(string file, bool isHeader = false);
-    void write(string file, string data, vector<string> header_cols);
+    void write(string file, string data);
     vector<CSVRow> getHeader(string file, bool isHeader = true);
-    void setHeader(string file, vector<string> headerCols, bool isHeader = true);
+    void display(string file, string col_name, int col_width);
     // ? Search Int Data
     vector<CSVRow> search(string file, int data, int index, bool isHeader = false);
     // ? Search Float Data

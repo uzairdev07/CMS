@@ -29,6 +29,15 @@ private:
             "Search By Date",
             "Search By Department Name"
     };
+
+    // * Header Cols
+    vector<string> col_names {
+            "Id",
+            "Name",
+            "Fee",
+            "Start Date",
+            "Department Name"
+    };
 public:
     // * Constructor
     Courses();

@@ -51,7 +51,7 @@ ostream &operator<<(ostream &os, const department &department) {
 void department::setDepartment() {
     CSVParser parser;
     cin >> *this;
-    parser.write(DEPARTMENTS_FILE, this->getDepartment(), this->col_names);
+    parser.write(DEPARTMENTS_FILE, this->getDepartment());
 }
 
 // ? Get department

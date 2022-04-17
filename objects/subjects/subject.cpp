@@ -54,7 +54,7 @@ ostream &operator<<(ostream &os, const subject &subject) {
 void subject::setSubject() {
     CSVParser parser;
     cin >> *this;
-    parser.write(SUBJECTS_FILE, this->getSubject(), this->col_names);
+    parser.write(SUBJECTS_FILE, this->getSubject());
 }
 
 // ? Get subjectMenu

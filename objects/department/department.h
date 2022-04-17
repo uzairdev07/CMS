@@ -15,11 +15,6 @@ private:
     // * Attributes
     int id;
     string name;
-    // * Header Cols
-    vector<string> col_names = {
-            "Id",
-            "Name"
-    };
 public:
     // * Constructor
     department();

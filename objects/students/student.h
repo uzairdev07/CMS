@@ -18,16 +18,6 @@ private:
     string contact;
     string address;
     int course_id;
-    // * Header Cols
-    vector<string> col_names {
-            "Roll No",
-            "Name",
-            "DOB",
-            "Contact",
-            "Address",
-            "Course Id"
-    };
-
 public:
     // * Constructors
     student();

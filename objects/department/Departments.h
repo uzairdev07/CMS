@@ -21,10 +21,14 @@ private:
             "Search",
             "Display All"
     };
-
     vector<string> searchOptions{
             "Search By Id",
             "Search By Name",
+    };
+    // * Header Cols
+    vector<string> col_names = {
+            "Id",
+            "Name"
     };
 public:
     // * Constructor

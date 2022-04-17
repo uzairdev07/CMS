@@ -15,12 +15,6 @@ private:
     int id;
     string name;
     int course_id;
-    // * Header Cols
-    vector<string> col_names = {
-            "Id",
-            "Name",
-            "Course Id"
-    };
 public:
     // * Constructor
     subject();

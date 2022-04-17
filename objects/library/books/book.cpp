@@ -5,7 +5,6 @@
 #include "book.h"
 #include "../../../CSVParser/CSVParser.h"
 #include "../../../helpers/Const.cpp"
-#include <fstream>
 #include <sstream>
 #include <string>
 #include <iomanip>
@@ -61,7 +60,7 @@ ostream &operator<<(ostream &os, const book &book) {
 void book::setBook() {
     CSVParser parser;
     cin >> *this;
-    parser.write(BOOKS_FILE, this->getBook(), this->col_names);
+    parser.write(BOOKS_FILE, this->getBook());
 }
 
 // ? Get book

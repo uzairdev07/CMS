@@ -17,13 +17,6 @@ private:
     float fee;
     string startDate;
     int dep_id;
-    // * Header Cols
-    vector<string> col_names {
-            "Id",
-            "Name",
-            "Start Date",
-            "Depart. Id"
-    };
 public:
     // * Constructor
     course();

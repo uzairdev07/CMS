@@ -6,7 +6,6 @@
 #include "../../CSVParser/CSVParser.h"
 #include "../../helpers/Const.cpp"
 #include "../courses/Courses.h"
-#include <fstream>
 #include <sstream>
 #include <string>
 #include <iomanip>
@@ -70,7 +69,7 @@ ostream &operator<<(ostream &os, const student &student) {
 void student::setStudent() {
     CSVParser parser;
     cin >> *this;
-    parser.write(STUDENTS_FILE, this->getStudent(), this->col_names);
+    parser.write(STUDENTS_FILE, this->getStudent());
 }
 
 // ? Get Student

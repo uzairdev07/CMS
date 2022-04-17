@@ -19,16 +19,6 @@ private:
     string address;
     string role;
     int subject_id;
-    // * Header Cols
-    vector<string> col_names {
-            "Roll No",
-            "Name",
-            "DOB",
-            "Contact",
-            "Address",
-            "Course Id"
-    };
-
 public:
     // * Constructor
     teacher();

@@ -66,7 +66,7 @@ istream &operator>>(istream &is, teacher &teacher) {
 void teacher::setTeacher() {
     CSVParser parser;
     cin >> *this;
-    parser.write(TEACHERS_FILE, getTeacher(), this->col_names);
+    parser.write(TEACHERS_FILE, getTeacher());
 }
 
 // ? Get Teacher from File

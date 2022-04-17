@@ -29,6 +29,13 @@ private:
             "Search By Title",
             "Search By Pages",
     };
+    // * Header Cols
+    vector<string> col_names = {
+            "Id",
+            "Author",
+            "Title",
+            "Pages"
+    };
 public:
     // * Constructor
     Books();

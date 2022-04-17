@@ -13,7 +13,7 @@ void Attendance::takeAttendance(int studentId, int status) {
     this->student_id = studentId;
     this->status = status;
     CSVParser parser;
-    parser.write(STUDENTS_ATTENDANCE_FILE, this->getData(), this->col_names);
+    parser.write(STUDENTS_ATTENDANCE_FILE, this->getData());
 }
 
 string Attendance::getData() const {

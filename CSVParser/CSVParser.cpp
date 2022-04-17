@@ -27,7 +27,7 @@ vector<CSVRow> CSVParser::read(string file, bool isHeader) {
     return rows;
 }
 
-void CSVParser::write(string file, string data, vector<string> header_cols) {
+void CSVParser::write(string file, string data) {
     ofstream outputFile;
     outputFile.open(file, ios::out | ios::app);
     if (!outputFile)
@@ -49,14 +49,6 @@ vector<CSVRow> CSVParser::getHeader(string file, bool isHeader) {
     }
     inputFile.close();
     return header;
-}
-
-void CSVParser::setHeader(string file, vector<string> headerCols, bool isHeader) {
-    ofstream outputFile (file, ios::out);
-    if (!outputFile)
-        cerr << "Unable to open file! ...";
-
-    outputFile.close();
 }
 
 // ? Search Int Data

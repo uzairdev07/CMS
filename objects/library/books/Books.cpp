@@ -30,22 +30,9 @@ Books::Books() {}
 // ? Display All Books
 void Books::getTotalBooks() const {
     CSVParser parser;
-    vector<CSVRow> header = parser.getHeader(BOOKS_FILE);
     vector<CSVRow> books = parser.read(BOOKS_FILE);
     if (!(books.size()) == 0) {
-        for ( auto col: header )
-            cout << setw(COL_WIDTH) << col.getString(0)
-                 << setw(COL_WIDTH) << col.getString(1)
-                 << setw(COL_WIDTH) << col.getString(2)
-                 << setw(COL_WIDTH) << col.getString(3)
-                 << endl;
-        printLine(90);
-        for ( auto book: books )
-            cout << setw(COL_WIDTH) << book.getInt(0)
-                 << setw(COL_WIDTH) << book.getString(1)
-                 << setw(COL_WIDTH) << book.getString(2)
-                 << setw(COL_WIDTH) << book.getInt(3)
-                 << endl;
+        printBooks(books);
     } else
         cerr << "No Record Founded Ye! ...";
 }
@@ -103,15 +90,28 @@ int Books::getSize() const {
 }
 
 void Books::printBooks(vector<CSVRow> records) const {
+    // * values for controlling format
+    const int STR_WIDTH = 15;
+    const int INT_WIDTH = 7;
+    const int DBL_WIDTH = 12;
+    const int NUM_FIELDS = 7;
+    const string SEP = " |";
+    const int TOTAL_WIDTH = STR_WIDTH * 2 + INT_WIDTH * 2 + DBL_WIDTH * 3 + SEP.size() * NUM_FIELDS;
+    const string LINE = SEP + string(TOTAL_WIDTH - 1, '-') + '|';
     if (records.size() != 0) {
-        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Author" << setw(COL_WIDTH) << "Title" << setw(COL_WIDTH)
-             << "Pages" << setw(COL_WIDTH) << "Status" << endl;
-        for ( auto book: records)
-            cout << setw(COL_WIDTH) << book.getInt(0)
-                 << setw(COL_WIDTH) << book.getString(1)
-                 << setw(COL_WIDTH) << book.getString(2)
-                 << setw(COL_WIDTH) << book.getInt(3)
-                 << endl;
+        cout << LINE << '\n' << SEP
+             << setw(INT_WIDTH) << col_names[0] << SEP
+             << setw(STR_WIDTH) << col_names[1] << SEP
+             << setw(STR_WIDTH) << col_names[2] << SEP
+             << setw(INT_WIDTH) << col_names[3] << SEP
+             << '\n' << LINE << '\n';
+        for (auto record: records)
+            cout << SEP << setw(INT_WIDTH) << record.getInt(0)
+                 << SEP << setw(STR_WIDTH) << record.getString(1)
+                 << SEP << setw(STR_WIDTH) << record.getString(2)
+                 << SEP << setw(STR_WIDTH) << record.getInt(3)
+                 << SEP << '\n';
+        cout << LINE << '\n';
     } else
         cerr << "No Records founded yet!..." << endl;
 }

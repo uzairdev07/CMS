@@ -60,7 +60,7 @@ ostream &operator<<(ostream &os, const course &course) {
 void course::setCourse() {
     CSVParser parser;
     cin >> *this;
-    parser.write(COURSES_FILE, this->getCourse(), this->col_names);
+    parser.write(COURSES_FILE, this->getCourse());
 }
 
 // ? Get Course

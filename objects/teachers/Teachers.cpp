@@ -24,29 +24,10 @@ Teachers::Teachers() {}
 // ? Display All Teachers
 void Teachers::getTotalTeachers() const {
     CSVParser parser;
-    vector<CSVRow> header = parser.getHeader(TEACHERS_FILE);
     vector<CSVRow> teachers = parser.read(TEACHERS_FILE);
-    if (teachers.size() != 0) {
-        for ( auto col: header )
-            cout << setw(COL_WIDTH) << col.getString(0)
-                 << setw(COL_WIDTH) << col.getString(1)
-                 << setw(COL_WIDTH) << col.getString(2)
-                 << setw(COL_WIDTH) << col.getString(3)
-                 << setw(COL_WIDTH) << col.getString(4)
-                 << setw(COL_WIDTH) << col.getString(5)
-                 << setw(COL_WIDTH) << "Subject_Name"
-                 << endl;
-        printLine(105);
-        for ( auto teacher: teachers )
-            cout << setw(COL_WIDTH) << teacher.getInt(0)
-                 << setw(COL_WIDTH) << teacher.getString(1)
-                 << setw(COL_WIDTH) << teacher.getString(2)
-                 << setw(COL_WIDTH) << teacher.getString(3)
-                 << setw(COL_WIDTH) << teacher.getString(4)
-                 << setw(COL_WIDTH) << teacher.getString(5)
-                 << setw(COL_WIDTH) << getSubjectName(teacher.getInt(6))
-                 << endl;
-    } else
+    if (!(teachers.size() == 0))
+        printTeachers(teachers);
+    else
         cerr << "No Record Founded Ye! ...";
 }
 
@@ -120,18 +101,32 @@ string Teachers::getSubjectName(int id) const {
 }
 
 void Teachers::printTeachers(vector<CSVRow> records) const {
+    // * values for controlling format
+    const int STR_WIDTH = 15;
+    const int INT_WIDTH = 7;
+    const int DBL_WIDTH = 12;
+    const int NUM_FIELDS = 7;
+    const string SEP = " |";
+    const int TOTAL_WIDTH = STR_WIDTH * 2 + INT_WIDTH * 2 + DBL_WIDTH * 3 + SEP.size() * NUM_FIELDS;
+    const string LINE = SEP + string(TOTAL_WIDTH - 1, '-') + '|';
     if (records.size() != 0) {
-        cout << setw(COL_WIDTH) << "Id" << setw(COL_WIDTH) << "Name" << setw(COL_WIDTH) << "DOB" << setw(COL_WIDTH)
-             << "Contact" << setw(COL_WIDTH) << "Address" << setw(COL_WIDTH) << "Role" << setw(COL_WIDTH) << "Subject Name" << endl;
-        for ( auto record: records)
-            cout << setw(COL_WIDTH) << record.getInt(0)
-                 << setw(COL_WIDTH) << record.getString(1)
-                 << setw(COL_WIDTH) << record.getString(2)
-                 << setw(COL_WIDTH) << record.getString(3)
-                 << setw(COL_WIDTH) << record.getString(4)
-                 << setw(COL_WIDTH) << record.getString(5)
-                 << setw(COL_WIDTH) << getSubjectName(record.getInt(6))
-                 << endl;
+        cout << LINE << '\n' << SEP
+             << setw(INT_WIDTH) << col_names[0] << SEP
+             << setw(STR_WIDTH) << col_names[1] << SEP
+             << setw(STR_WIDTH) << col_names[2] << SEP
+             << setw(STR_WIDTH) << col_names[3] << SEP
+             << setw(STR_WIDTH) << col_names[4] << SEP
+             << setw(STR_WIDTH) << col_names[5] << SEP
+             << '\n' << LINE << '\n';
+        for (auto record: records)
+            cout << SEP << setw(INT_WIDTH) << record.getInt(0)
+                 << SEP << setw(STR_WIDTH) << record.getString(1)
+                 << SEP << setw(STR_WIDTH) << record.getString(2)
+                 << SEP << setw(STR_WIDTH) << record.getString(3)
+                 << SEP << setw(STR_WIDTH) << record.getString(4)
+                 << SEP << setw(STR_WIDTH) << getSubjectName(record.getInt(5))
+                 << SEP << '\n';
+        cout << LINE << '\n';
     } else
         cerr << "No Records founded yet!..." << endl;
 }

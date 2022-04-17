@@ -27,6 +27,12 @@ private:
             "Search By Name",
             "Search By Course Name"
     };
+    // * Header Cols
+    vector<string> col_names = {
+            "Id",
+            "Name",
+            "Course Name"
+    };
 public:
     // * Constructor
     Subjects();
