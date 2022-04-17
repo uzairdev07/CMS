@@ -156,14 +156,14 @@ void Subjects::select() {
                     clear();
                     getTotalSubjects();
                     cout << "Enter Name: ";
-                    cin >> name;
+                    getline(cin, name);
                     searchByName(name);
                     break;
                 case 3:
                     clear();
                     getTotalSubjects();
                     cout << "Enter Course Name: ";
-                    cin >> course;
+                    getline(cin, course);
                     searchByCourse(course);
                     break;
             }

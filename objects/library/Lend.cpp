@@ -15,7 +15,7 @@ Lend::Lend(int book_id, const Date &issue_Date, const Date &return_Date, int stu
 void Lend::lendBook(string file, int book_id, int student_id) {
     setLendBook(book_id, issueDate, returnDate, student_id);
     CSVParser parser;
-    parser.write(file, getData());
+    parser.write(file, getData(), this->col_names);
 }
 
 void Lend::setLendBook(int book_id, const Date &issue_Date, const Date &return_Date, int student_id) {

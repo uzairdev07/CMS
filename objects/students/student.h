@@ -6,9 +6,7 @@
 #define UNI_PROJECT_STUDENT_H
 
 #include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
+#include <vector>
 using namespace std;
 
 class student {
@@ -20,6 +18,15 @@ private:
     string contact;
     string address;
     int course_id;
+    // * Header Cols
+    vector<string> col_names {
+            "Roll No",
+            "Name",
+            "DOB",
+            "Contact",
+            "Address",
+            "Course Id"
+    };
 
 public:
     // * Constructors

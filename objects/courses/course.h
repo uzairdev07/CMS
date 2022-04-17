@@ -6,6 +6,7 @@
 #define UNI_PROJECT_COURSE_H
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class course {
@@ -16,6 +17,13 @@ private:
     float fee;
     string startDate;
     int dep_id;
+    // * Header Cols
+    vector<string> col_names {
+            "Id",
+            "Name",
+            "Start Date",
+            "Depart. Id"
+    };
 public:
     // * Constructor
     course();

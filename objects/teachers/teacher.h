@@ -6,9 +6,7 @@
 #define UNI_PROJECT_TEACHER_H
 
 #include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
+#include <vector>
 using namespace std;
 
 class teacher {
@@ -21,6 +19,15 @@ private:
     string address;
     string role;
     int subject_id;
+    // * Header Cols
+    vector<string> col_names {
+            "Roll No",
+            "Name",
+            "DOB",
+            "Contact",
+            "Address",
+            "Course Id"
+    };
 
 public:
     // * Constructor

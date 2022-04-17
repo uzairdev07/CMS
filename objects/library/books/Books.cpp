@@ -194,14 +194,14 @@ void Books::select() {
                     clear();
                     getTotalBooks();
                     cout << "Enter Author: ";
-                    cin >> author;
+                    getline(cin, author);
                     searchByAuthor(author);
                     break;
                 case 3:
                     clear();
                     getTotalBooks();
                     cout << "Enter Title: ";
-                    cin >> title;
+                    getline(cin, title);
                     searchByTitle(title);
                     break;
                 case 4:

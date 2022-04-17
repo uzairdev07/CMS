@@ -7,13 +7,13 @@
 #include "../CSVParser/CSVParser.h"
 #include "../helpers/Const.cpp"
 
-Attendance::Attendance() {}
+Attendance::Attendance() = default;
 
 void Attendance::takeAttendance(int studentId, int status) {
     this->student_id = studentId;
     this->status = status;
     CSVParser parser;
-    parser.write(STUDENTS_ATTENDANCE_FILE, this->getData());
+    parser.write(STUDENTS_ATTENDANCE_FILE, this->getData(), this->col_names);
 }
 
 string Attendance::getData() const {

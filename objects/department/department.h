@@ -6,6 +6,7 @@
 #define CMS_DEPARTMENT_H
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class department {
@@ -14,6 +15,11 @@ private:
     // * Attributes
     int id;
     string name;
+    // * Header Cols
+    vector<string> col_names = {
+            "Id",
+            "Name"
+    };
 public:
     // * Constructor
     department();

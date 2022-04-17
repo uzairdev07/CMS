@@ -139,8 +139,7 @@ void Students::takeAttendance() {
     getTotalStudents();
     vector<int> absent_students;
     Attendance attendance;
-    int student_id;
-    int n{};
+    int n {};
     input:
     cout << "Enter the student id (Press 0 to save): ";
     n = getche();
@@ -220,35 +219,35 @@ void Students::select() {
                     clear();
                     getTotalStudents();
                     cout << "Enter Name: ";
-                    cin >> name;
+                    getline(cin, name);
                     searchByName(name);
                     break;
                 case 3:
                     clear();
                     getTotalStudents();
                     cout << "Enter DOB: ";
-                    cin >> dob;
+                    getline(cin, dob);
                     searchByDob(dob);
                     break;
                 case 4:
                     clear();
                     getTotalStudents();
                     cout << "Enter Contact: ";
-                    cin >> contact;
+                    getline(cin, contact);
                     searchByContact(contact);
                     break;
                 case 5:
                     clear();
                     getTotalStudents();
                     cout << "Enter Address: ";
-                    cin >> address;
+                    getline(cin, address);
                     searchByAddress(address);
                     break;
                 case 6:
                     clear();
                     getTotalStudents();
                     cout << "Enter Course Name: ";
-                    cin >> course_name;
+                    getline(cin, course_name);
                     searchByCourse(course_name);
                     break;
             }

@@ -6,6 +6,7 @@
 #define CMS_LEND_H
 
 #include <iostream>
+#include <vector>
 #include "../../utilities/DateTime/Date.h"
 using namespace std;
 
@@ -16,6 +17,13 @@ private:
     Date issueDate;
     Date returnDate;
     int studentId;
+    // * Header Cols
+    vector<string> col_names = {
+            "Book Id",
+            "Issue Date",
+            "Return Date",
+            "Student Id",
+    };
     // * Get Lend Book Data
     string getData() const;
 public:

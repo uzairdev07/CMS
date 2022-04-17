@@ -6,6 +6,7 @@
 #define CMS_ATTENDANCE_H
 
 #include <iostream>
+#include <vector>
 #include "DateTime/Date.h"
 using namespace std;
 
@@ -15,6 +16,11 @@ private:
     int student_id{};
     int status{};     // ? 1 for Preset and 0 for absent
     Date attendance_date;
+    vector<string> col_names {
+            "Student Id",
+            "Status",
+            "Date"
+    };
 public:
     Attendance();
     void takeAttendance(int studentId, int status = 1);

@@ -31,11 +31,11 @@ istream &operator>>(istream &is, course &course) {
     cout << "Enter id: ";
     is >> course.id;
     cout << "Enter Name: ";
-    is >> course.name;
+    getline(is, course.name);
     cout << "Enter Fee: ";
     is >> course.fee;
     cout << "Enter Start Date: ";
-    is >> course.startDate;
+    getline(is, course.startDate);
     Departments departments;
     departments.getTotalDepartments();
     cout << "Enter Department Id: ";
@@ -60,7 +60,7 @@ ostream &operator<<(ostream &os, const course &course) {
 void course::setCourse() {
     CSVParser parser;
     cin >> *this;
-    parser.write(COURSES_FILE, this->getCourse());
+    parser.write(COURSES_FILE, this->getCourse(), this->col_names);
 }
 
 // ? Get Course

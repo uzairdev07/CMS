@@ -31,7 +31,7 @@ istream &operator>>(istream &is, subject &subject) {
     cout << "Enter id: ";
     is >> subject.id;
     cout << "Enter Name: ";
-    is >> subject.name;
+    getline(is, subject.name);
     Courses courses;
     courses.getTotalCourses();
     cout << "Enter Course Id: ";
@@ -54,7 +54,7 @@ ostream &operator<<(ostream &os, const subject &subject) {
 void subject::setSubject() {
     CSVParser parser;
     cin >> *this;
-    parser.write(SUBJECTS_FILE, this->getSubject());
+    parser.write(SUBJECTS_FILE, this->getSubject(), this->col_names);
 }
 
 // ? Get subjectMenu

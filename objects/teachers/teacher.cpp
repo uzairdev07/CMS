@@ -4,6 +4,9 @@
 
 #include "teacher.h"
 #include <iomanip>
+#include <fstream>
+#include <sstream>
+#include <string>
 #include "../../CSVParser/CSVParser.h"
 #include "../../helpers/Const.cpp"
 #include "../subjects/Subjects.h"
@@ -41,15 +44,15 @@ istream &operator>>(istream &is, teacher &teacher) {
     cout << "Enter Id: ";
     is >> teacher.id;
     cout << "Enter Name: ";
-    is >> teacher.name;
+    getline(is, teacher.name);
     cout << "Enter Date of Birth: ";
-    is >> teacher.dob;
+    getline(is, teacher.dob);
     cout << "Enter Contact: ";
-    is >> teacher.contact;
+    getline(is, teacher.contact);
     cout << "Enter Address: ";
-    is >> teacher.address;
+    getline(is, teacher.address);
     cout << "Enter Role: ";
-    is >> teacher.role;
+    getline(is, teacher.role);
     Subjects subjects;
     subjects.getTotalSubjects();
     cout << "Enter Subject Id: ";
@@ -63,7 +66,7 @@ istream &operator>>(istream &is, teacher &teacher) {
 void teacher::setTeacher() {
     CSVParser parser;
     cin >> *this;
-    parser.write(TEACHERS_FILE, getTeacher());
+    parser.write(TEACHERS_FILE, getTeacher(), this->col_names);
 }
 
 // ? Get Teacher from File

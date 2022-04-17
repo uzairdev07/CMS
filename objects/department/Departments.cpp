@@ -148,7 +148,7 @@ void Departments::select() {
                     clear();
                     getTotalDepartments();
                     cout << "Enter Name: ";
-                    cin >> name;
+                    getline(cin, name);
                     searchByName(name);
                     break;
             }

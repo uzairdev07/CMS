@@ -6,6 +6,9 @@
 #include "../../CSVParser/CSVParser.h"
 #include "../../helpers/Const.cpp"
 #include "../courses/Courses.h"
+#include <fstream>
+#include <sstream>
+#include <string>
 #include <iomanip>
 
 /*
@@ -35,13 +38,13 @@ istream &operator>>(istream &is, student &student) {
     cout << "Enter Roll: ";
     is >> student.roll;
     cout << "Enter Name: ";
-    is >> student.name;
+    getline(is, student.name);
     cout << "Enter Date of Birth: ";
-    is >> student.dob;
+    getline(is, student.dob);
     cout << "Enter Contact: ";
-    is >> student.contact;
+    getline(is, student.contact);
     cout << "Enter Address: ";
-    is >> student.address;
+    getline(is, student.address);
     Courses courses;
     courses.getTotalCourses();
     cout << "Enter Course id: ";
@@ -67,7 +70,7 @@ ostream &operator<<(ostream &os, const student &student) {
 void student::setStudent() {
     CSVParser parser;
     cin >> *this;
-    parser.write(STUDENTS_FILE, this->getStudent());
+    parser.write(STUDENTS_FILE, this->getStudent(), this->col_names);
 }
 
 // ? Get Student

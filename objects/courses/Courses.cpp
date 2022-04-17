@@ -188,7 +188,7 @@ void Courses::select() {
                     clear();
                     getTotalCourses();
                     cout << "Enter Name: ";
-                    cin >> name;
+                    getline(cin, name);
                     searchByName(name);
                     break;
                 case 3:
@@ -202,14 +202,14 @@ void Courses::select() {
                     clear();
                     getTotalCourses();
                     cout << "Enter Start Date: ";
-                    cin >> startDate;
+                    getline(cin, startDate);
                     searchByStartDate(startDate);
                     break;
                 case 5:
                     clear();
                     getTotalCourses();
                     cout << "Enter Department Name: ";
-                    cin >> dep_name;
+                    getline(cin, dep_name);
                     searchByDepartmentName(dep_name);
                     break;
             }

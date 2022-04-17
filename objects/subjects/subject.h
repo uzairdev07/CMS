@@ -6,6 +6,7 @@
 #define UNI_PROJECT_SUBJECT_H
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class subject {
@@ -14,6 +15,12 @@ private:
     int id;
     string name;
     int course_id;
+    // * Header Cols
+    vector<string> col_names = {
+            "Id",
+            "Name",
+            "Course Id"
+    };
 public:
     // * Constructor
     subject();

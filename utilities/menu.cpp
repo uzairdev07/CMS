@@ -86,5 +86,4 @@ void Menu::libraryMenu() const {
 }
 
 Menu::~Menu() {
-
 }

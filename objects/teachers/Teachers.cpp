@@ -196,42 +196,42 @@ void Teachers::select() {
                     clear();
                     getTotalTeachers();
                     cout << "Enter Name: ";
-                    cin >> name;
+                    getline(cin, name);
                     searchByName(name);
                     break;
                 case 3:
                     clear();
                     getTotalTeachers();
                     cout << "Enter DOB: ";
-                    cin >> dob;
+                    getline(cin, dob);
                     searchByDob(dob);
                     break;
                 case 4:
                     clear();
                     getTotalTeachers();
                     cout << "Enter Contact ";
-                    cin >> contact;
+                    getline(cin, contact);
                     searchByContact(contact);
                     break;
                 case 5:
                     clear();
                     getTotalTeachers();
                     cout << "Enter Address: ";
-                    cin >> address;
+                    getline(cin, address);
                     searchByAddress(address);
                     break;
                 case 6:
                     clear();
                     getTotalTeachers();
                     cout << "Enter Role: ";
-                    cin >> role;
+                    getline(cin, role);
                     searchByRole(role);
                     break;
                 case 7:
                     clear();
                     getTotalTeachers();
                     cout << "Enter Subject: ";
-                    cin >> subject_name;
+                    getline(cin, subject_name);
                     searchBySubject(subject_name);
                     break;
             }

@@ -5,6 +5,9 @@
 #include "book.h"
 #include "../../../CSVParser/CSVParser.h"
 #include "../../../helpers/Const.cpp"
+#include <fstream>
+#include <sstream>
+#include <string>
 #include <iomanip>
 
 /*
@@ -33,9 +36,9 @@ istream &operator>>(istream &is, book &book) {
     cout << "Enter Id: ";
     is >> book.id;
     cout << "Enter Author Name: ";
-    is >> book.author;
+    getline(is, book.author);
     cout << "Enter Title: ";
-    is >> book.title;
+    getline(is, book.title);
     cout << "Enter Pages: ";
     is >> book.pages;
     return is;
@@ -58,7 +61,7 @@ ostream &operator<<(ostream &os, const book &book) {
 void book::setBook() {
     CSVParser parser;
     cin >> *this;
-    parser.write(BOOKS_FILE, this->getBook());
+    parser.write(BOOKS_FILE, this->getBook(), this->col_names);
 }
 
 // ? Get book

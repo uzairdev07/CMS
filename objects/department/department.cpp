@@ -5,6 +5,9 @@
 #include "department.h"
 #include "../../CSVParser/CSVParser.h"
 #include "../../helpers/Const.cpp"
+#include <fstream>
+#include <sstream>
+#include <string>
 #include <iomanip>
 
 /*
@@ -30,7 +33,7 @@ istream &operator>>(istream &is, department &department) {
     cout << "Enter id: ";
     is >> department.id;
     cout << "Enter Name: ";
-    is >> department.name;
+    getline(is, department.name);
     return is;
 }
 
@@ -48,7 +51,7 @@ ostream &operator<<(ostream &os, const department &department) {
 void department::setDepartment() {
     CSVParser parser;
     cin >> *this;
-    parser.write(DEPARTMENTS_FILE, this->getDepartment());
+    parser.write(DEPARTMENTS_FILE, this->getDepartment(), this->col_names);
 }
 
 // ? Get department
